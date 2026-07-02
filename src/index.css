@@ -1,0 +1,283 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Cyberpunk palette (main site) */
+  --color-cyber-bg: #030308;
+  --color-cyber-panel: #07070f;
+  --color-cyber-cyan: #00f0ff;
+  --color-cyber-magenta: #ff2ec4;
+  --color-cyber-green: #34d399;
+
+  /* Aurora palette (draft, kept for ?draft=aurora) */
+  --color-aurora-bg: #060614;
+  --color-aurora-violet: #8b5cf6;
+  --color-aurora-cyan: #22d3ee;
+  --color-aurora-pink: #f472b6;
+
+  /* Light palette (draft, kept for ?draft=light) */
+  --color-lite-bg: #fafaff;
+  --color-lite-ink: #14141f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--color-cyber-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgb(0 240 255 / 0.25);
+  color: #fff;
+}
+
+/* Thin neon scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cyber-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(0 240 255 / 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0 240 255 / 0.45);
+}
+
+/* ---------- shared ---------- */
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1.1s step-end infinite;
+}
+
+/* Animated gradient sweep across text. */
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient-animated {
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-pan 6s ease-in-out infinite;
+}
+
+/* ---------- cyberpunk: CRT layer ---------- */
+
+/* Scanlines + vignette over the whole viewport (decorative only). */
+.crt::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgb(0 0 0 / 0.18) 3px,
+    transparent 4px
+  );
+}
+
+.crt::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 69;
+  pointer-events: none;
+  background: radial-gradient(ellipse 120% 100% at 50% 50%, transparent 60%, rgb(0 0 0 / 0.45));
+}
+
+/* ---------- cyberpunk: glitch ---------- */
+
+@keyframes glitch-shift {
+  0% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-3px, -2px);
+  }
+  25% {
+    clip-path: inset(65% 0 10% 0);
+    transform: translate(3px, 1px);
+  }
+  50% {
+    clip-path: inset(40% 0 40% 0);
+    transform: translate(-2px, 2px);
+  }
+  75% {
+    clip-path: inset(10% 0 75% 0);
+    transform: translate(2px, -1px);
+  }
+  100% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(-3px, 2px);
+  }
+}
+
+/* Two offset copies of the text (from data-text) flicker on hover
+   or whenever the .glitching class is toggled on (auto bursts). */
+.cyber-glitch {
+  position: relative;
+}
+
+.cyber-glitch::before,
+.cyber-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cyber-glitch:hover::before,
+.cyber-glitch.glitching::before {
+  opacity: 0.9;
+  color: var(--color-cyber-cyan);
+  animation: glitch-shift 0.4s steps(2, end) infinite;
+}
+
+.cyber-glitch:hover::after,
+.cyber-glitch.glitching::after {
+  opacity: 0.9;
+  color: var(--color-cyber-magenta);
+  animation: glitch-shift 0.4s steps(2, end) reverse infinite;
+}
+
+/* ---------- cyberpunk: neon grid floor ---------- */
+
+@keyframes gridfloor-scroll {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 44px;
+  }
+}
+
+/* Perspective-tilted grid rushing toward the viewer (hero bottom). */
+.cyber-gridfloor {
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: -12%;
+  height: 46%;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgb(0 240 255 / 0.16) 1px, transparent 1px),
+    linear-gradient(to top, rgb(0 240 255 / 0.16) 1px, transparent 1px);
+  background-size: 44px 44px;
+  transform: perspective(500px) rotateX(62deg);
+  animation: gridfloor-scroll 1.4s linear infinite;
+  mask-image: linear-gradient(to bottom, transparent, black 35%, black 75%, transparent);
+}
+
+/* ---------- cyberpunk: neon sign flicker ---------- */
+
+@keyframes neon-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  41% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.5;
+  }
+  43% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.25;
+  }
+  46% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  79% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 1;
+  }
+}
+
+.neon-flicker {
+  animation: neon-flicker 7s linear infinite;
+}
+
+/* ---------- aurora draft ---------- */
+
+.aurora-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent);
+}
+
+/* ---------- light draft ---------- */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track,
+  .text-gradient-animated,
+  .cursor-blink,
+  .cyber-gridfloor,
+  .neon-flicker,
+  .cyber-glitch:hover::before,
+  .cyber-glitch:hover::after,
+  .cyber-glitch.glitching::before,
+  .cyber-glitch.glitching::after {
+    animation: none;
+  }
+}
