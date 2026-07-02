@@ -1,0 +1,28 @@
+---
+name: portfolio-project-state
+description: "Jakub's portfolio website — decisions, structure, deployment, and current status"
+metadata: 
+  node_type: memory
+  type: project
+  originSessionId: 945c189f-7cc8-44c0-a2d4-15d0ad51b97c
+---
+
+Portfolio site for Jakub Kierznowski (Java Software Developer Intern @ IBM, targeting junior→regular roles). Built in `H:\Projects\portfolio_web`.
+
+Stack & decisions (2026-07-02):
+- Vite 7 + React 19 + TypeScript + Tailwind CSS 4 + Framer Motion 12
+- Cyberpunk theme; English only; all animations respect prefers-reduced-motion
+- All content in `src/data/content.ts`. IBM = graph algorithms in Java for Data Lineage (LinkedIn was outdated). Public email jakub.kierznowskiii@gmail.com (triple i); phone NOT published (deliberate)
+- Aurora + Light design drafts kept in `src/drafts/`, viewable at `?draft=aurora` / `?draft=light`
+- `./CV` link in navbar → `public/cv/Jakub-Kierznowski-CV.pdf`
+
+Deployment:
+- GitHub repo **qualv13/qualv13.github.io** (user deleted the old 2023 "Hacker page" repo and recreated). Auth via SSH (id_ed25519, no passphrase, registered 2026-07-02).
+- Live at **https://qualv13.github.io** via `.github/workflows/deploy.yml` (Actions build, source set to "GitHub Actions" in Pages settings — required manual toggle).
+- Git author is user's own (qualv13); **user asked NOT to add Claude as co-author** — respect on future commits here. [[user-jakub]]
+
+Branches:
+- `main` — **the netrunner build is now the live site** (fast-forwarded 2026-07-02 at user's request after review; deploys automatically)
+- `netrunner` — the CP2077 restyle branch, now identical to main after fast-forward. Contents: yellow/cyan/red palette, Rajdhani HUD font, clipped-corner UI, HUD frame, RELIC malfunction bursts (backdrop-filter bands, NO page shake — user rejected the translate/skew version), playable Breach Protocol minigame, CP77 favicon, live demo links on all projects (instaldesk.pl, DrugPath at qualv13.github.io/neo4j-agent, iot-frontend-2r8o.onrender.com, hardware-hub-2qc7.onrender.com), achievement proof links (GraphAcademy cert URLs = graphacademy.neo4j.com/c/{credential-id}), age-based RAM gag (born 2004-01-15, capacity = age, 2 reserved for hackathons).
+
+Status: both branches pushed & building clean; live site verified serving built assets + CV. Sections: Hero, About, Experience, Projects (DrugPath/InstalDesk/IoTServerApp/CarCharging/Fit2Beat/hardware-hub), Skills, Achievements+Education, Contact, Footer.
