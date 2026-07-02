@@ -24,7 +24,7 @@ export default function Navbar(props: { onTerminal: () => void }) {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5 text-sm">
         <a href="#top" className="text-white/70 transition hover:text-white">
-          <span className="text-cyber-cyan">jakub</span>@kierznowski:~
+          <span className="text-cyber-cyan">jakub</span>@netrunner:~
         </a>
 
         <nav className="hidden items-center gap-5 md:flex">
@@ -38,7 +38,7 @@ export default function Navbar(props: { onTerminal: () => void }) {
             href={CV_URL}
             target="_blank"
             rel="noreferrer"
-            className="border border-cyber-magenta/60 px-3 py-1 text-cyber-magenta transition hover:bg-cyber-magenta/10 hover:shadow-[0_0_20px_rgba(255,46,196,0.35)]"
+            className="clip-corner-sm border border-cyber-yellow bg-cyber-yellow px-3 py-1 font-bold text-black transition hover:shadow-[0_0_22px_rgba(252,238,10,0.5)]"
           >
             ./CV
           </a>
@@ -79,7 +79,7 @@ export default function Navbar(props: { onTerminal: () => void }) {
             href={CV_URL}
             target="_blank"
             rel="noreferrer"
-            className="mt-2 w-fit border border-cyber-magenta/60 px-3 py-1.5 text-cyber-magenta"
+            className="clip-corner-sm mt-2 w-fit border border-cyber-yellow bg-cyber-yellow px-3 py-1.5 font-bold text-black"
           >
             ./CV
           </a>

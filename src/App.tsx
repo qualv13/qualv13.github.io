@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { MotionConfig, motion, useScroll } from "framer-motion";
 import BootScreen from "./components/effects/BootScreen";
+import HudFrame from "./components/effects/HudFrame";
+import RelicGlitch from "./components/effects/RelicGlitch";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -11,6 +13,7 @@ import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import TerminalOverlay from "./components/TerminalOverlay";
+import BreachProtocol from "./components/BreachProtocol";
 import AuroraLanding from "./drafts/AuroraLanding";
 import LightLanding from "./drafts/LightLanding";
 
@@ -20,12 +23,12 @@ function getDraftParam(): "aurora" | "light" | null {
   return value === "aurora" || value === "light" ? value : null;
 }
 
-/** Thin cyan→magenta bar at the very top tracking scroll position. */
+/** Thin cyan→yellow bar at the very top tracking scroll position. */
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   return (
     <motion.div
-      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-gradient-to-r from-cyber-cyan to-cyber-magenta"
+      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-gradient-to-r from-cyber-cyan to-cyber-yellow"
       style={{ scaleX: scrollYProgress }}
     />
   );
@@ -34,8 +37,9 @@ function ScrollProgress() {
 function Site() {
   const [bootDone, setBootDone] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
+  const [breachOpen, setBreachOpen] = useState(false);
 
-  // Backtick opens the terminal from anywhere (unless typing in an input).
+  // Backtick opens the netdeck terminal from anywhere (unless typing in an input).
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "`" && !(event.target instanceof HTMLInputElement)) {
@@ -48,12 +52,14 @@ function Site() {
   }, []);
 
   return (
-    <div id="top" className="crt min-h-screen bg-cyber-bg font-mono text-white">
+    <div id="site-shell" className="crt min-h-screen bg-cyber-bg font-mono text-white">
       <BootScreen onDone={() => setBootDone(true)} />
       <ScrollProgress />
+      <HudFrame />
+      <RelicGlitch />
       <Navbar onTerminal={() => setTerminalOpen(true)} />
       <main>
-        <Hero start={bootDone} />
+        <Hero start={bootDone} onBreach={() => setBreachOpen(true)} />
         <About />
         <Experience />
         <Projects />
@@ -62,7 +68,15 @@ function Site() {
         <Contact />
       </main>
       <Footer />
-      <TerminalOverlay open={terminalOpen} onClose={() => setTerminalOpen(false)} />
+      <TerminalOverlay
+        open={terminalOpen}
+        onClose={() => setTerminalOpen(false)}
+        onBreach={() => {
+          setTerminalOpen(false);
+          setBreachOpen(true);
+        }}
+      />
+      <BreachProtocol open={breachOpen} onClose={() => setBreachOpen(false)} />
     </div>
   );
 }

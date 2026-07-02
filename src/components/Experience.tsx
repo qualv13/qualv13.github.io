@@ -6,7 +6,7 @@ import Tag from "./ui/Tag";
 
 export default function Experience() {
   return (
-    <Section id="experience" index={2} command="git log --experience">
+    <Section id="experience" index={2} title="Experience" sub="combat_log">
       <div className="relative ml-2 border-l border-white/10 pl-8 md:ml-4">
         {experience.map((entry) => (
           <motion.article
@@ -42,7 +42,7 @@ export default function Experience() {
             <motion.ul variants={fadeIn} className="mt-3 space-y-2 text-sm leading-relaxed text-white/60">
               {entry.bullets.map((bullet) => (
                 <li key={bullet.slice(0, 24)}>
-                  <span className="text-cyber-magenta">▹</span> {bullet}
+                  <span className="text-cyber-yellow">▹</span> {bullet}
                 </li>
               ))}
             </motion.ul>

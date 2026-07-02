@@ -38,6 +38,7 @@ export const highlights = [
 
 /** key:value stats rendered as mono chips in the hero. */
 export const heroStats = [
+  { key: "class", value: "netrunner" },
   { key: "gpa", value: "4.74/5.00" },
   { key: "certifications", value: "25" },
   { key: "graph_nodes_tamed", value: "47k+" },

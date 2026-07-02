@@ -6,7 +6,7 @@ import Tag from "./ui/Tag";
 
 export default function About() {
   return (
-    <Section id="about" index={1} command="cat ./about.md">
+    <Section id="about" index={1} title="About" sub="identity">
       <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
         <motion.div
           variants={stagger}

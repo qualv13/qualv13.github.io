@@ -16,11 +16,16 @@ export default function Contact() {
         viewport={viewportOnce}
         className="mx-auto flex max-w-2xl flex-col items-center border border-cyber-cyan/20 bg-cyber-panel/60 px-6 py-14 text-center shadow-[0_0_80px_rgba(0,240,255,0.07)]"
       >
-        <motion.p variants={fadeIn} className="text-sm text-cyber-magenta">
-          [06]
+        <motion.p variants={fadeIn}>
+          <span className="clip-corner-sm bg-cyber-yellow px-2.5 py-0.5 font-hud text-sm font-bold text-black">
+            06
+          </span>
         </motion.p>
-        <motion.h2 variants={fadeIn} className="mt-2 text-2xl font-bold md:text-3xl">
-          <span className="text-cyber-cyan">$</span> ./contact --init
+        <motion.h2
+          variants={fadeIn}
+          className="mt-3 font-hud text-2xl font-bold uppercase tracking-wide md:text-3xl"
+        >
+          Contact <span className="text-cyber-cyan">// open_channel</span>
         </motion.h2>
 
         <motion.p variants={fadeIn} className="mt-5 max-w-md leading-relaxed text-white/60">
@@ -37,10 +42,10 @@ export default function Contact() {
         </motion.p>
 
         <motion.div variants={fadeIn} className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <NeonButton href={`mailto:${profile.email}`} color="cyan">
-            &gt; send_email
+          <NeonButton href={`mailto:${profile.email}`} color="solid">
+            ▶ send_email
           </NeonButton>
-          <NeonButton href={CV_URL} color="magenta" external>
+          <NeonButton href={CV_URL} color="cyan" external>
             &gt; download_cv
           </NeonButton>
         </motion.div>

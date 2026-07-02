@@ -5,7 +5,7 @@ import Section from "./ui/Section";
 
 export default function Skills() {
   return (
-    <Section id="skills" index={4} command="tree ~/skills">
+    <Section id="skills" index={4} title="Skills" sub="cyberware">
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {skillGroups.map((group) => (
           <motion.div

@@ -4,15 +4,17 @@ import { profile, projects, skillGroups } from "../data/content";
 
 const CV_URL = `${import.meta.env.BASE_URL}${profile.cvFile}`;
 
-type Line = { text: string; kind: "input" | "output" | "accent" | "error" };
+type Line = { text: string; kind: "input" | "output" | "accent" | "warn" | "error" };
 
 const BANNER: Line[] = [
-  { text: "jakub.sh v2.6 — interactive portfolio shell", kind: "accent" },
-  { text: "type 'help' to list commands, 'exit' or Esc to close", kind: "output" },
+  { text: "netdeck v2.077 — jack in.", kind: "warn" },
+  { text: "type 'help' to list quickhacks, 'exit' or Esc to jack out", kind: "output" },
 ];
 
+type Actions = { openBreach: () => void };
+
 /** Each command returns lines to print; "CLEAR"/"EXIT" are control signals. */
-function runCommand(raw: string): Line[] | "CLEAR" | "EXIT" {
+function runCommand(raw: string, actions: Actions): Line[] | "CLEAR" | "EXIT" {
   const command = raw.trim().toLowerCase();
 
   switch (command) {
@@ -21,10 +23,13 @@ function runCommand(raw: string): Line[] | "CLEAR" | "EXIT" {
     case "help":
       return [
         { text: "available commands:", kind: "output" },
-        { text: "  whoami        who is this guy", kind: "output" },
-        { text: "  projects      list featured builds", kind: "output" },
-        { text: "  skills        dump the stack", kind: "output" },
-        { text: "  contact       ways to reach me", kind: "output" },
+        { text: "  whoami        who is this merc", kind: "output" },
+        { text: "  breach        run the breach protocol minigame", kind: "output" },
+        { text: "  quickhacks    list installed quickhacks", kind: "output" },
+        { text: "  scan          scan the current visitor", kind: "output" },
+        { text: "  projects      list deployed daemons", kind: "output" },
+        { text: "  skills        dump the cyberware", kind: "output" },
+        { text: "  contact       open a channel", kind: "output" },
         { text: "  cv            open the PDF resume", kind: "output" },
         { text: "  neofetch      system info", kind: "output" },
         { text: "  sudo hire_me  you know you want to", kind: "output" },
@@ -35,6 +40,28 @@ function runCommand(raw: string): Line[] | "CLEAR" | "EXIT" {
         { text: `${profile.name} — ${profile.role}`, kind: "accent" },
         { text: `${profile.education} · ${profile.location}`, kind: "output" },
         { text: profile.tagline, kind: "output" },
+      ];
+    case "breach":
+      actions.openBreach();
+      return [{ text: "initializing breach protocol ...", kind: "warn" }];
+    case "quickhacks":
+      return [
+        { text: "installed quickhacks:", kind: "output" },
+        { text: "  PING            1 RAM — checks if a recruiter is online", kind: "accent" },
+        { text: "  DATAMINE        3 RAM — extracts CV.pdf (try 'cv')", kind: "accent" },
+        { text: "  SHORT_CIRCUIT   2 RAM — fries imposter syndrome [cooldown: 24h]", kind: "accent" },
+        { text: "  REBOOT_OPTICS   2 RAM — see this site in the light-theme draft", kind: "accent" },
+        { text: "type 'reboot_optics' to execute the last one. careful.", kind: "output" },
+      ];
+    case "reboot_optics":
+      window.location.href = `${import.meta.env.BASE_URL}?draft=light`;
+      return [{ text: "rebooting optics ... photosensitivity warning", kind: "warn" }];
+    case "scan":
+      return [
+        { text: "scanning visitor ...", kind: "output" },
+        { text: "[ corpo badge detected — probability: recruiter 87% ]", kind: "warn" },
+        { text: "adjusting buzzword emitters ... done", kind: "output" },
+        { text: "recommendation: run 'sudo hire_me'", kind: "accent" },
       ];
     case "projects":
       return projects.map((project) => ({
@@ -58,14 +85,15 @@ function runCommand(raw: string): Line[] | "CLEAR" | "EXIT" {
       return [{ text: "opening Jakub-Kierznowski-CV.pdf ...", kind: "accent" }];
     case "neofetch":
       return [
-        { text: "jakub@kierznowski", kind: "accent" },
-        { text: "-----------------", kind: "output" },
-        { text: "os:       student/intern hybrid", kind: "output" },
+        { text: "jakub@netrunner", kind: "warn" },
+        { text: "---------------", kind: "output" },
+        { text: "os:       student/intern hybrid (Night City build)", kind: "output" },
         { text: "host:     AGH Kraków · IBM Software Lab", kind: "output" },
         { text: "kernel:   java-spring with python modules", kind: "output" },
         { text: "uptime:   3rd year of CS & Intelligent Systems", kind: "output" },
         { text: "packages: 25 certifications", kind: "output" },
         { text: "gpu:      caffeine-accelerated", kind: "output" },
+        { text: "ram:      14/16 (2 reserved for hackathons)", kind: "output" },
       ];
     case "sudo hire_me":
     case "hire_me":
@@ -90,10 +118,15 @@ const LINE_CLASS: Record<Line["kind"], string> = {
   input: "text-white/80",
   output: "text-white/55",
   accent: "text-cyber-cyan",
-  error: "text-cyber-magenta",
+  warn: "text-cyber-yellow",
+  error: "text-cyber-red",
 };
 
-export default function TerminalOverlay(props: { open: boolean; onClose: () => void }) {
+export default function TerminalOverlay(props: {
+  open: boolean;
+  onClose: () => void;
+  onBreach: () => void;
+}) {
   const [lines, setLines] = useState<Line[]>(BANNER);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
@@ -117,7 +150,7 @@ export default function TerminalOverlay(props: { open: boolean; onClose: () => v
   }, [lines, props.open]);
 
   const submit = () => {
-    const result = runCommand(input);
+    const result = runCommand(input, { openBreach: props.onBreach });
     if (result === "CLEAR") {
       setLines([]);
     } else if (result === "EXIT") {
@@ -170,21 +203,21 @@ export default function TerminalOverlay(props: { open: boolean; onClose: () => v
             initial={{ scale: 0.96, y: 12 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.96, y: 12 }}
-            className="flex max-h-[70vh] w-full max-w-2xl flex-col border border-cyber-cyan/30 bg-cyber-bg shadow-[0_0_80px_rgba(0,240,255,0.15)]"
+            className="clip-corner flex max-h-[70vh] w-full max-w-2xl flex-col border border-cyber-cyan/30 bg-cyber-bg shadow-[0_0_80px_rgba(0,240,255,0.15)]"
             onClick={(event) => {
               event.stopPropagation();
               inputRef.current?.focus();
             }}
           >
             <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-              <span className="size-3 rounded-full bg-cyber-magenta/70" />
-              <span className="size-3 rounded-full bg-yellow-400/60" />
+              <span className="size-3 rounded-full bg-cyber-red/70" />
+              <span className="size-3 rounded-full bg-cyber-yellow/70" />
               <span className="size-3 rounded-full bg-cyber-cyan/70" />
-              <span className="ml-3 text-xs text-white/40">~/jakub — interactive</span>
+              <span className="ml-3 text-xs text-white/40">~/jakub — netdeck</span>
               <button
                 type="button"
                 onClick={props.onClose}
-                className="ml-auto text-white/40 transition hover:text-cyber-magenta"
+                className="ml-auto text-white/40 transition hover:text-cyber-red"
                 aria-label="Close terminal"
               >
                 [x]
@@ -200,7 +233,7 @@ export default function TerminalOverlay(props: { open: boolean; onClose: () => v
             </div>
 
             <div className="flex items-center gap-2 border-t border-white/10 px-5 py-3 text-[13px]">
-              <span className="text-cyber-magenta">$</span>
+              <span className="text-cyber-yellow">$</span>
               <input
                 ref={inputRef}
                 value={input}

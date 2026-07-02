@@ -16,41 +16,50 @@ const TERMINAL_LINES = [
   { text: "$ ls ./skills", accent: "dim" },
   { text: "java/  spring-boot/  hibernate/  python/  neo4j/  docker/", accent: "cyan" },
   { text: "$ cat status.txt", accent: "dim" },
-  { text: "● open_to_work: junior java backend roles", accent: "magenta" },
+  { text: "● open_to_work: junior java backend roles", accent: "warn" },
   { text: "$ ./career --next", accent: "dim" },
   { text: "intern → junior → regular software engineer", accent: "cyan" },
+  { text: "$ breach --hint", accent: "dim" },
+  { text: "hit the yellow button, choom", accent: "warn" },
 ] as const;
 
 const ACCENT_CLASS: Record<(typeof TERMINAL_LINES)[number]["accent"], string> = {
   dim: "text-white/40",
   plain: "text-white/85",
   cyan: "text-cyber-cyan",
-  magenta: "text-cyber-magenta",
+  warn: "text-cyber-yellow",
 };
 
-export default function Hero(props: { start: boolean }) {
+export default function Hero(props: { start: boolean; onBreach: () => void }) {
   const boot = useTyping("initialize --profile jakub_kierznowski", 70, 300, props.start);
 
   return (
     <div className="relative overflow-hidden">
       {/* --- background: digital rain, glows, grid floor --- */}
       <MatrixRain className="absolute inset-0 h-full w-full opacity-[0.16]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(ellipse_60%_100%_at_50%_0%,rgba(0,240,255,0.14),transparent)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(ellipse_60%_100%_at_50%_0%,rgba(252,238,10,0.08),transparent)]" />
       <div className="cyber-gridfloor" />
 
       <div className="relative z-10 mx-auto grid max-w-6xl gap-14 px-6 pb-28 pt-16 md:pt-24 lg:grid-cols-[1.15fr_1fr] lg:items-center">
         {/* --- left column --- */}
         <div>
           <p className="text-sm text-white/50">
-            <span className="text-cyber-magenta">$</span> {boot.typed}
+            <span className="text-cyber-yellow">$</span> {boot.typed}
             {!boot.done && <span className="cursor-blink text-cyber-cyan">▊</span>}
             {boot.done && <span className="text-cyber-green"> [OK]</span>}
           </p>
 
           <motion.div variants={stagger} initial="hidden" animate={boot.done ? "visible" : "hidden"}>
+            <motion.p
+              variants={fadeIn}
+              className="mt-8 font-hud text-xs font-semibold uppercase tracking-[0.3em] text-cyber-yellow"
+            >
+              ID: JK-2077 // class: netrunner // merc for hire
+            </motion.p>
+
             <motion.h1
               variants={fadeIn}
-              className="mt-6 text-4xl font-bold uppercase tracking-tight md:text-6xl"
+              className="mt-2 text-4xl font-bold uppercase tracking-tight md:text-6xl"
             >
               <GlitchText auto text={profile.name.toUpperCase()} />
             </motion.h1>
@@ -77,21 +86,21 @@ export default function Hero(props: { start: boolean }) {
 
             <motion.div variants={fadeIn} className="mt-6 flex flex-wrap gap-2.5">
               {highlights.map((badge, i) => (
-                <Tag key={badge} color={i % 2 === 0 ? "cyan" : "magenta"}>
+                <Tag key={badge} color={i % 2 === 0 ? "yellow" : "cyan"}>
                   {badge}
                 </Tag>
               ))}
             </motion.div>
 
             <motion.div variants={fadeIn} className="mt-9 flex flex-wrap gap-4">
+              <NeonButton color="solid" onClick={props.onBreach}>
+                ▶ breach_protocol
+              </NeonButton>
               <NeonButton href="#projects" color="cyan">
                 &gt; view_projects
               </NeonButton>
-              <NeonButton href={CV_URL} color="magenta" external>
+              <NeonButton href={CV_URL} color="red" external>
                 &gt; download_cv
-              </NeonButton>
-              <NeonButton href="#contact" color="ghost">
-                &gt; contact_me
               </NeonButton>
             </motion.div>
 
@@ -105,7 +114,7 @@ export default function Hero(props: { start: boolean }) {
               <a href={`mailto:${profile.email}`} className="transition hover:text-cyber-cyan" aria-label="Email">
                 <MailIcon className="size-5" />
               </a>
-              <span className="text-xs">press <kbd className="border border-white/20 px-1.5 py-0.5">`</kbd> for terminal</span>
+              <span className="text-xs">press <kbd className="border border-white/20 px-1.5 py-0.5">`</kbd> for netdeck</span>
             </motion.div>
           </motion.div>
         </div>
@@ -115,13 +124,13 @@ export default function Hero(props: { start: boolean }) {
           initial={{ opacity: 0, x: 32 }}
           animate={boot.done ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="rounded-lg border border-cyber-cyan/25 bg-black/60 shadow-[0_0_60px_rgba(0,240,255,0.12)] backdrop-blur-sm"
+          className="clip-corner border border-cyber-cyan/25 bg-black/60 shadow-[0_0_60px_rgba(0,240,255,0.12)] backdrop-blur-sm"
         >
           <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-            <span className="size-3 rounded-full bg-cyber-magenta/70" />
-            <span className="size-3 rounded-full bg-yellow-400/60" />
+            <span className="size-3 rounded-full bg-cyber-red/70" />
+            <span className="size-3 rounded-full bg-cyber-yellow/70" />
             <span className="size-3 rounded-full bg-cyber-cyan/70" />
-            <span className="ml-3 text-xs text-white/40">~/jakub — bash</span>
+            <span className="ml-3 text-xs text-white/40">~/jakub — netdeck</span>
           </div>
           <div className="space-y-2 px-5 py-5 text-[13px] leading-relaxed">
             {TERMINAL_LINES.map((line, i) => (
@@ -129,7 +138,7 @@ export default function Hero(props: { start: boolean }) {
                 key={line.text}
                 initial={{ opacity: 0 }}
                 animate={boot.done ? { opacity: 1 } : {}}
-                transition={{ delay: 0.5 + i * 0.18 }}
+                transition={{ delay: 0.5 + i * 0.16 }}
                 className={ACCENT_CLASS[line.accent]}
               >
                 {line.text}
@@ -138,7 +147,7 @@ export default function Hero(props: { start: boolean }) {
             <motion.p
               initial={{ opacity: 0 }}
               animate={boot.done ? { opacity: 1 } : {}}
-              transition={{ delay: 0.5 + TERMINAL_LINES.length * 0.18 }}
+              transition={{ delay: 0.5 + TERMINAL_LINES.length * 0.16 }}
               className="text-cyber-cyan"
             >
               <span className="cursor-blink">▊</span>

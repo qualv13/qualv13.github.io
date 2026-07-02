@@ -4,14 +4,14 @@ import { fadeUp, viewportOnce } from "../lib/motion";
 import Section from "./ui/Section";
 
 const KIND_ICON = {
-  award: { symbol: "★", className: "text-cyber-magenta border-cyber-magenta/40" },
+  award: { symbol: "★", className: "text-cyber-yellow border-cyber-yellow/50" },
   cert: { symbol: "◆", className: "text-cyber-cyan border-cyber-cyan/40" },
-  leadership: { symbol: "⚡", className: "text-yellow-300 border-yellow-300/40" },
+  leadership: { symbol: "⚡", className: "text-cyber-red border-cyber-red/40" },
 } as const;
 
 export default function Achievements() {
   return (
-    <Section id="achievements" index={5} command="cat ./achievements.log">
+    <Section id="achievements" index={5} title="Achievements" sub="street_cred">
       <div className="grid gap-4 md:grid-cols-2">
         {achievements.map((achievement) => {
           const icon = KIND_ICON[achievement.kind];

@@ -2,19 +2,26 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const BOOT_LINES = [
-  "JK-BIOS v26.7 — POST",
-  "> cpu: caffeine-9000 @ 4.74GHz ......... [OK]",
-  "> mounting /dev/java ................... [OK]",
-  "> spring context loaded in 0.42s ....... [OK]",
-  "> neo4j graph online: 47,031 nodes ..... [OK]",
-  "> launching jakub.kierznowski .......... [OK]",
+  { text: "BREACH PROTOCOL v2.077 // NC-KRK RELAY", tone: "yellow" },
+  { text: "> scanning target .............. [ JK_PORTFOLIO ]", tone: "cyan" },
+  { text: "> ICE detected: none — choom left the door open", tone: "dim" },
+  { text: "> injecting daemon: PORTFOLIO.EXE ......... [OK]", tone: "cyan" },
+  { text: "> RELIC integrity: 98% (ignore the flickering)", tone: "red" },
+  { text: "> ACCESS GRANTED — welcome, netrunner", tone: "yellow" },
 ] as const;
 
-const LINE_DELAY_MS = 140;
-const HOLD_MS = 450;
+const TONE_CLASS: Record<(typeof BOOT_LINES)[number]["tone"], string> = {
+  yellow: "text-cyber-yellow",
+  cyan: "text-cyber-cyan/85",
+  red: "text-cyber-red/90",
+  dim: "text-white/45",
+};
+
+const LINE_DELAY_MS = 150;
+const HOLD_MS = 500;
 
 /**
- * Fake BIOS boot overlay shown once per browser session.
+ * Breach-protocol boot overlay shown once per browser session.
  * Any click or key press skips it immediately.
  * Calls `onDone` once it's out of the way so the hero can start typing.
  */
@@ -53,18 +60,21 @@ export default function BootScreen(props: { onDone: () => void }) {
           exit={{ opacity: 0, transition: { duration: 0.35 } }}
           aria-hidden="true"
         >
-          <div className="w-full max-w-md font-mono text-[13px] leading-relaxed">
-            {BOOT_LINES.map((line, i) => (
-              <motion.p
-                key={line}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: (i * LINE_DELAY_MS) / 1000, duration: 0.05 }}
-                className={i === 0 ? "text-cyber-magenta" : "text-cyber-cyan/80"}
-              >
-                {line}
-              </motion.p>
-            ))}
+          <div className="w-full max-w-md">
+            <div className="hazard-bar mb-4 h-1.5 w-24" />
+            <div className="font-mono text-[13px] leading-relaxed">
+              {BOOT_LINES.map((line, i) => (
+                <motion.p
+                  key={line.text}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: (i * LINE_DELAY_MS) / 1000, duration: 0.05 }}
+                  className={TONE_CLASS[line.tone]}
+                >
+                  {line.text}
+                </motion.p>
+              ))}
+            </div>
           </div>
         </motion.div>
       )}

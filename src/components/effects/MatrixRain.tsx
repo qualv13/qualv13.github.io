@@ -4,7 +4,8 @@ const GLYPHS = "アイウエオカキクケコサシスセソ01<>{}[]$#@%&*+=/\\
 const FONT_SIZE = 14;
 const FRAME_MS = 50; // ~20fps is plenty for rain and easy on the CPU
 const CYAN = "rgba(0, 240, 255, 0.85)";
-const MAGENTA = "rgba(255, 46, 196, 0.85)";
+const YELLOW = "rgba(252, 238, 10, 0.8)";
+const RED = "rgba(255, 0, 60, 0.8)";
 
 /**
  * Classic "digital rain" on a canvas. Sized to its parent, capped DPR,
@@ -47,7 +48,8 @@ export default function MatrixRain({ className = "" }: { className?: string }) {
 
       drops.forEach((y, i) => {
         const glyph = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-        ctx.fillStyle = Math.random() < 0.06 ? MAGENTA : CYAN;
+        const roll = Math.random();
+        ctx.fillStyle = roll < 0.06 ? YELLOW : roll < 0.08 ? RED : CYAN;
         ctx.fillText(glyph, i * FONT_SIZE, y * FONT_SIZE);
         // Reset a drop to the top at random once it leaves the screen.
         drops[i] = y * FONT_SIZE > canvas.offsetHeight && Math.random() > 0.975 ? 0 : y + 1;

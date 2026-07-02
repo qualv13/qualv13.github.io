@@ -20,7 +20,7 @@ function CornerBrackets() {
 
 export default function Projects() {
   return (
-    <Section id="projects" index={3} command="ls ./projects --sort=impact">
+    <Section id="projects" index={3} title="Projects" sub="deployed_daemons">
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project) => (
           <motion.article
@@ -41,7 +41,7 @@ export default function Projects() {
             </header>
 
             {project.badge && (
-              <p className="mt-2 w-fit border border-cyber-magenta/40 px-2 py-0.5 text-[11px] text-cyber-magenta">
+              <p className="clip-corner-sm mt-2 w-fit border border-cyber-yellow/50 px-2 py-0.5 text-[11px] text-cyber-yellow">
                 ★ {project.badge}
               </p>
             )}
