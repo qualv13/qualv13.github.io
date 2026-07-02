@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { profile, projects, skillGroups } from "../data/content";
+import { currentAge, profile, projects, skillGroups } from "../data/content";
 
 const CV_URL = `${import.meta.env.BASE_URL}${profile.cvFile}`;
 
@@ -83,18 +83,20 @@ function runCommand(raw: string, actions: Actions): Line[] | "CLEAR" | "EXIT" {
     case "cv":
       window.open(CV_URL, "_blank");
       return [{ text: "opening Jakub-Kierznowski-CV.pdf ...", kind: "accent" }];
-    case "neofetch":
+    case "neofetch": {
+      const age = currentAge();
       return [
         { text: "jakub@netrunner", kind: "warn" },
         { text: "---------------", kind: "output" },
         { text: "os:       student/intern hybrid (Night City build)", kind: "output" },
         { text: "host:     AGH Kraków · IBM Software Lab", kind: "output" },
         { text: "kernel:   java-spring with python modules", kind: "output" },
-        { text: "uptime:   3rd year of CS & Intelligent Systems", kind: "output" },
+        { text: `uptime:   ${age} years — 3rd year of CS & Intelligent Systems`, kind: "output" },
         { text: "packages: 25 certifications", kind: "output" },
         { text: "gpu:      caffeine-accelerated", kind: "output" },
-        { text: "ram:      14/16 (2 reserved for hackathons)", kind: "output" },
+        { text: `ram:      ${age - 2}/${age} (2 reserved for hackathons)`, kind: "output" },
       ];
+    }
     case "sudo hire_me":
     case "hire_me":
       window.location.href = `mailto:${profile.email}?subject=Let's talk about a Java role`;

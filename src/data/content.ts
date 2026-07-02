@@ -5,6 +5,20 @@
  * Sources: CV (2026), LinkedIn profile, github.com/qualv13.
  */
 
+/** Birthday doubles as the netrunner RAM spec: capacity = current age. */
+export const BIRTH_DATE = new Date(2004, 0, 15);
+
+/** Current age in full years. */
+export function currentAge(): number {
+  const now = new Date();
+  let age = now.getFullYear() - BIRTH_DATE.getFullYear();
+  const beforeBirthday =
+    now.getMonth() < BIRTH_DATE.getMonth() ||
+    (now.getMonth() === BIRTH_DATE.getMonth() && now.getDate() < BIRTH_DATE.getDate());
+  if (beforeBirthday) age -= 1;
+  return age;
+}
+
 export const profile = {
   name: "Jakub Kierznowski",
   firstName: "Jakub",
@@ -181,7 +195,10 @@ export const projects: readonly Project[] = [
       "that's where non-obvious (and dangerous) connections emerge. Educational project on public research data.",
     stats: "47,031 nodes · 293k relationships · 1 traversable graph",
     tech: ["Neo4j Aura", "Cypher", "AI Agents", "Python"],
-    links: { github: "https://github.com/qualv13/neo4j-agent" },
+    links: {
+      github: "https://github.com/qualv13/neo4j-agent",
+      demo: "https://qualv13.github.io/neo4j-agent/",
+    },
   },
   {
     name: "InstalDesk",
@@ -192,7 +209,7 @@ export const projects: readonly Project[] = [
       "subscription payments, offline-first architecture, email activation and subscription " +
       "reminders. Designed, built and shipped end-to-end solo.",
     tech: ["Python", "FastAPI", "Stripe", "KSeF API"],
-    links: {},
+    links: { demo: "https://instaldesk.pl" },
     private: true,
   },
   {
@@ -204,7 +221,10 @@ export const projects: readonly Project[] = [
       "communication via RabbitMQ, OTA firmware delivery, telemetry ingestion and fleet " +
       "management. Containerized with Docker Compose.",
     tech: ["Java", "Spring Boot", "MQTT", "RabbitMQ", "PostgreSQL", "Protobuf", "AWS S3", "Docker"],
-    links: { github: "https://github.com/qualv13/IoTServerApp" },
+    links: {
+      github: "https://github.com/qualv13/IoTServerApp",
+      demo: "https://iot-frontend-2r8o.onrender.com/",
+    },
   },
   {
     name: "CarCharging",
@@ -236,7 +256,10 @@ export const projects: readonly Project[] = [
       "AI-native internal hardware rental & inventory hub — agent-friendly tooling for tracking " +
       "equipment, availability and hand-offs.",
     tech: ["Python", "AI Agents"],
-    links: { github: "https://github.com/qualv13/hardware-hub" },
+    links: {
+      github: "https://github.com/qualv13/hardware-hub",
+      demo: "https://hardware-hub-2qc7.onrender.com/",
+    },
   },
 ] as const;
 
@@ -253,7 +276,7 @@ export const skillGroups: readonly SkillGroup[] = [
       { name: "Java", core: true },
       { name: "Spring Boot", core: true },
       { name: "Hibernate / JPA" },
-      { name: "JUnit" },
+      { name: "JUnit", core: true },
       { name: "Maven" },
       { name: "Python", core: true },
       { name: "FastAPI" },
@@ -268,7 +291,7 @@ export const skillGroups: readonly SkillGroup[] = [
     skills: [
       { name: "PostgreSQL", core: true },
       { name: "Neo4j", core: true },
-      { name: "Cypher" },
+      { name: "Cypher", core: true },
       { name: "SQL" },
       { name: "Protocol Buffers" },
       { name: "Data Engineering" },
@@ -279,7 +302,7 @@ export const skillGroups: readonly SkillGroup[] = [
     skills: [
       { name: "Docker", core: true },
       { name: "CI/CD (Jenkins)" },
-      { name: "Git / GitHub" },
+      { name: "Git / GitHub", core: true },
       { name: "Linux / Bash" },
       { name: "AWS (S3)" },
       { name: "VPS self-hosting" },
@@ -326,6 +349,8 @@ export type Achievement = {
   detail: string;
   year: string;
   kind: "award" | "cert" | "leadership";
+  /** Proof: certificate page, repo, or announcement. */
+  link?: string;
 };
 
 export const achievements: readonly Achievement[] = [
@@ -340,24 +365,28 @@ export const achievements: readonly Achievement[] = [
     detail: "DrugPath: biomedical knowledge-graph agent · 47k nodes, 293k relationships",
     year: "2026",
     kind: "award",
+    link: "https://community.neo4j.com/t/aura-agent-hackathon-winners-announced/79568",
   },
   {
     title: "Neo4j Certified Professional",
     detail: "Graph database certification straight from Neo4j",
     year: "2026",
     kind: "cert",
+    link: "https://graphacademy.neo4j.com/c/6c4023ef-a651-4de9-80cd-bb064f5a7b0b/",
   },
   {
     title: "Building Agents in Neo4j Aura",
     detail: "Agentic AI on graph data, certified by Neo4j",
     year: "2026",
     kind: "cert",
+    link: "https://graphacademy.neo4j.com/c/e6140917-3cff-415a-a1b9-7de97e0c3735/",
   },
   {
     title: "Amazon certificates ×3",
     detail: "Programming with Java · Data Structures & Algorithms · Application Development",
     year: "2024–25",
     kind: "cert",
+    link: "https://www.linkedin.com/in/jakub-kierznowski/details/certifications/",
   },
   {
     title: "VOLT 2025 — Coordinator",
@@ -376,6 +405,7 @@ export const achievements: readonly Achievement[] = [
     detail: "Unity Learn certification path",
     year: "2021",
     kind: "cert",
+    link: "https://learn.unity.com/u/5e2039f0edbc2a00d6d818e0",
   },
 ] as const;
 

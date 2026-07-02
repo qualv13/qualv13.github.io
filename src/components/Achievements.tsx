@@ -36,6 +36,16 @@ export default function Achievements() {
                   <span className="ml-2 text-xs font-normal text-white/35">{achievement.year}</span>
                 </h3>
                 <p className="mt-1 text-sm leading-relaxed text-white/55">{achievement.detail}</p>
+                {achievement.link && (
+                  <a
+                    href={achievement.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 inline-block text-xs text-cyber-cyan transition hover:text-white"
+                  >
+                    [ view proof ↗ ]
+                  </a>
+                )}
               </div>
             </motion.div>
           );
