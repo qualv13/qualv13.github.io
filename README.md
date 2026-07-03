@@ -4,11 +4,10 @@ Cyberpunk-themed personal portfolio: digital rain, boot sequence, glitch
 effects, and an interactive terminal (press <code>`</code> on the site or the
 `>_` button in the navbar — try `sudo hire_me`).
 
-> **`netrunner` branch** — a Cyberpunk 2077 restyle: yellow/cyan/red
-> palette, Rajdhani HUD type, clipped-corner UI, an optics HUD frame,
-> periodic RELIC malfunction bursts, and a **playable Breach Protocol
-> minigame** (the CP2077 hacking puzzle — solve daemons to unlock the CV
-> and contact links). `main` stays the cleaner cyan/magenta version.
+> Styled after **Cyberpunk 2077**: yellow/cyan/red palette, Rajdhani HUD
+> type, clipped-corner UI, an optics HUD frame, periodic RELIC malfunction
+> bursts, and a **playable Breach Protocol minigame** (the CP2077 hacking
+> puzzle — solve daemons to unlock the CV and contact links).
 
 ## Stack
 
