@@ -31,6 +31,14 @@ Two export traps, both found the hard way:
 - In the print dialog margins must be **Default**, not None. "None" zeroes the
   `@page` margins, so continuation pages lose their 14 mm top gap.
 
+Conventions that must survive future edits:
+- dates read **"Mon YYYY"** (`Feb 2026 – Present`), not `02.2026`; parsers built for
+  the US market fail to attach a European numeric date to its role
+- headings are **PROJECTS** and **SKILLS**, not "My Projects" / "Skill Set"
+- no arrow glyphs inside a job title
+- the `@page` rule gives continuation pages a 14mm top margin, `@page:first` keeps
+  page one flush so the masthead band still bleeds
+
 Verify an export with three independent engines before trusting it — MuPDF,
 pdfminer.six and Xpdf share no code, so agreement between them means something:
 check heading names survive, that IBM is the first employer in the text, that
