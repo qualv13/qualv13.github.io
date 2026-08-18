@@ -12,9 +12,10 @@ Portfolio site for Jakub Kierznowski (Java Software Developer Intern @ IBM, targ
 Stack & decisions (2026-07-02):
 - Vite 7 + React 19 + TypeScript + Tailwind CSS 4 + Framer Motion 12
 - Cyberpunk theme; English only; all animations respect prefers-reduced-motion
-- All content in `src/data/content.ts`. IBM = graph algorithms in Java for Data Lineage (LinkedIn was outdated). Public email jakub.kierznowskiii@gmail.com (triple i); phone NOT published (deliberate)
+- All content in `src/data/content.ts`. IBM = graph algorithms in Java for Data Lineage (LinkedIn was outdated). Public email jakub.kierznowskiii@gmail.com (triple i); phone stays off the rendered site but is allowed under `public/cv/` — it belongs on a CV (owner's call, 08.2026)
 - Aurora + Light design drafts kept in `src/drafts/`, viewable at `?draft=aurora` / `?draft=light`
-- `./CV` link in navbar → `public/cv/Jakub-Kierznowski-CV.pdf`
+- `./CV` link in navbar → `public/cv/index.html` (PDF viewer page), **not** the raw
+  file; the `download_cv` buttons still point at the PDF. See [[cv-ats-rebuild]]
 
 Deployment:
 - GitHub repo **qualv13/qualv13.github.io** (user deleted the old 2023 "Hacker page" repo and recreated). Auth via SSH (id_ed25519, no passphrase, registered 2026-07-02).
