@@ -182,6 +182,17 @@ html.ats .split > * + *{border-left:0;padding-left:0}
 html.ats .split-head{text-align:left}
 html.ats .contact svg{display:none}
 html.ats a{text-decoration:none}
+/* One column is taller than two, and every entry stays whole, so a row that
+   will not fit leaves a gap at the foot of the page. That gap plus the extra
+   height was spilling the GDPR clause onto a third page. The fix is a tighter
+   rhythm here only -- do not swap it for break-inside:auto, Chrome ignores
+   break-after:avoid and strands the heading of the split entry. */
+html.ats .row{margin-bottom:1.8mm}
+html.ats .sec{margin-bottom:2.4mm}
+html.ats .row .rail{margin:.3mm 0 .6mm}
+html.ats h2{margin-bottom:2mm}
+html.ats .gdpr{padding-top:2.4mm;padding-bottom:2.4mm}
+html.ats p,html.ats li{orphans:2;widows:2}
 
 /* Page 1 is flush to the edge so the masthead band bleeds. Every later page
    gets a top margin, otherwise the continued text starts against the trim. */
