@@ -25,14 +25,14 @@ export const profile = {
   lastName: "Kierznowski",
   role: "Software Developer Intern @ IBM",
   education: "CS & Intelligent Systems student @ AGH",
-  headline: "I build production-grade Java backends.",
+  headline: "I build production-grade backends.",
   tagline:
     "Backend engineering with Spring Boot, graph data and AI integration. " +
     "Currently optimizing Data Lineage with graph algorithms in Java at IBM Kraków " +
     "and building my own SaaS on the side.",
   location: "Kraków, Poland",
   workMode: "on-site · hybrid",
-  availability: "Open to Junior Java roles",
+  availability: "Open to Junior Software Engineer roles",
   email: "jakub.kierznowskiii@gmail.com",
   /** Served from public/cv/ — path resolved against Vite's base URL. */
   cvFile: "cv/Jakub-Kierznowski-CV.pdf",
