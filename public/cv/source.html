@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jakub Kierznowski — CV</title>
+<meta name="description" content="CV — Jakub Kierznowski. Java / Spring Boot backend developer. Software Developer Intern at IBM, CS &amp; Intelligent Systems at AGH, solo developer of InstalDesk.">
+<meta name="robots" content="noindex">
+
+<!--
+  Export: Save as PDF, Margins "Default", Background graphics on. Twice: plain, and with ?ats.
+  Margins MUST be Default, not None: "None" zeroes the @page margins and the
+  continuation pages lose their top gap. "Default" honours the CSS.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- One weight only: Outfit's 500/600/700 subsets lose their spaces in Chrome's PDF text stream. -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --band:#efefef;
+  --paper:#ffffff;
+  --ink:#2e2c2c;
+  --body:#626060;
+  --mute:#8a8888;
+  --divider:#e2e2e2;
+
+  --sans:"Outfit","Poppins","Jost",-apple-system,"Segoe UI",Roboto,sans-serif;
+
+  --pad-x:17mm;
+  --rail:39.5mm;
+  --gutter:3mm;
+
+  --fs-name:30pt;
+  --fs-sub:13pt;
+  --fs-contact:10pt;
+  --fs-lead:8.9pt;
+  --fs-h2:14.5pt;
+  --fs-rail:10.4pt;
+  --fs-title:12.4pt;
+  --fs-body:8.6pt;
+  --fs-stack:7pt;
+  --fs-fine:6.2pt;
+}
+
+/* kerning off for the same reason as the single font weight */
+*{box-sizing:border-box;font-kerning:none;font-variant-ligatures:none}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;padding:22px 14px 60px;background:#3a3d41;font-family:var(--sans)}
+
+.bar{
+  width:210mm;max-width:100%;margin:0 auto 14px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px;
+  font:500 12px/1 var(--sans);color:#c9ccd1;
+}
+.bar button{
+  font:500 12px/1 var(--sans);color:#1a1c1f;background:#e6e3dd;
+  border:0;border-radius:3px;padding:9px 13px;cursor:pointer;
+}
+.bar button:hover{background:#fff}
+.bar label{display:flex;align-items:center;gap:7px;cursor:pointer}
+.bar .hint{margin-left:auto;color:#e0b64a}
+.bar .hint b{font-weight:600;color:#f0d68a}
+.bar input{width:14px;height:14px;cursor:pointer;accent-color:#8fb4ab}
+:focus-visible{outline:2px solid #8fb4ab;outline-offset:2px}
+
+.sheet{
+  width:210mm;min-height:297mm;margin:0 auto;
+  background:var(--paper);color:var(--body);
+  box-shadow:0 2px 30px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;
+  font-size:var(--fs-body);line-height:1.34;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+
+.masthead{
+  background:var(--band);padding:9mm var(--pad-x) 7mm;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.name{
+  margin:0;font-size:var(--fs-name);font-weight:700;line-height:1;
+  letter-spacing:.012em;text-transform:uppercase;color:var(--ink);
+}
+.sub{margin:3.2mm 0 0;font-size:var(--fs-sub);font-weight:400;color:var(--ink)}
+.contact{
+  margin:3mm 0 0;font-size:var(--fs-contact);color:var(--ink);
+  display:flex;flex-wrap:wrap;align-items:center;gap:0 3.2mm;
+}
+.contact span{display:inline-flex;align-items:center;gap:1.6mm;white-space:nowrap}
+.contact .pipe{color:#b4b2b2}
+.contact svg{width:1.15em;height:1.15em;flex:none}
+.contact a{color:var(--ink);text-decoration:none}
+.lead{
+  margin:3.4mm 0 0;font-size:var(--fs-lead);color:var(--body);
+  text-align:justify;hyphens:auto;
+}
+
+.doc{flex:1;padding:5mm var(--pad-x) 4mm}
+.sec{margin-bottom:4.2mm}
+.sec:last-child{margin-bottom:0}
+h2{
+  margin:0;font-size:var(--fs-h2);font-weight:700;line-height:1;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--ink);
+}
+.sec-bar{height:1.5mm;background:var(--band);margin:2.2mm 0 2.6mm;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+/* Rail and content. The rail sits after its heading in the markup and is pulled
+   left by grid-column, so the text reads top to bottom in a parser while it
+   looks two-column on paper. Change grid-column to move things, never the markup. */
+.row{
+  display:grid;
+  grid-template-columns:var(--rail) 1fr;
+  column-gap:var(--gutter);
+  margin-bottom:3.2mm;break-inside:avoid;
+}
+.row:last-child{margin-bottom:0}
+.row .title{grid-column:2;grid-row:1;margin:0;
+  font-size:var(--fs-title);font-weight:600;color:var(--ink);line-height:1.15}
+.row .rail{grid-column:1;grid-row:1 / span 2;text-align:right;
+  font-size:var(--fs-rail);color:var(--body);line-height:1.3;padding-top:.2mm}
+.row .rail b{display:block;font-weight:500;color:var(--ink)}
+.row .rail .stack{display:block;font-size:var(--fs-stack);color:var(--mute);
+  line-height:1.28;margin-top:.8mm}
+.row .desc{grid-column:2;grid-row:2;margin:1mm 0 0;
+  text-align:justify;hyphens:auto}
+.row .desc p{margin:0 0 .8mm}
+.row .desc p:last-child{margin:0}
+
+.split{display:grid;grid-template-columns:1fr 1fr;column-gap:8mm}
+.split > * + *{border-left:.4mm solid var(--divider);padding-left:8mm}
+.split-head{margin:0 0 1.6mm;text-align:center;font-size:var(--fs-title);
+  font-weight:600;color:var(--ink)}
+.split p{margin:0 0 1.4mm;text-align:justify;hyphens:auto}
+.split p:last-child{margin:0}
+.tag{font-weight:600;color:var(--ink)}
+
+.gdpr{
+  background:var(--band);padding:3mm var(--pad-x);
+  font-size:var(--fs-fine);line-height:1.35;color:#8e8c8c;text-align:justify;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.gdpr p{margin:0}
+
+a{color:inherit;text-decoration:underline;text-underline-offset:.14em;
+  text-decoration-thickness:.4pt}
+
+/* ATS mode: one column, no ornament, black on white */
+html.ats .sheet{box-shadow:none;color:#000}
+html.ats .masthead,
+html.ats .gdpr{background:#fff;padding-left:var(--pad-x);padding-right:var(--pad-x)}
+html.ats .gdpr{color:#444;border-top:1px solid #999}
+html.ats .sec-bar{display:none}
+html.ats h2{letter-spacing:.04em;font-size:12.5pt;color:#000;
+  border-bottom:1px solid #999;padding-bottom:1mm;margin-bottom:2.4mm}
+html.ats .name{letter-spacing:0;color:#000}
+html.ats .row{grid-template-columns:1fr;column-gap:0}
+html.ats .row .title,
+html.ats .row .rail,
+html.ats .row .desc{grid-column:1;grid-row:auto;text-align:left}
+html.ats .row .rail{margin:.4mm 0 1mm;font-size:var(--fs-body)}
+html.ats .row .rail b{display:inline}
+html.ats .row .rail b::after{content:" · "}
+html.ats .row .rail .stack{display:inline;font-size:var(--fs-body);color:#000}
+/* separators come from the elements that exist, so a rail without a .meta
+   does not end up with two of them */
+html.ats .row .rail .meta::after{content:" · "}
+html.ats .row .desc{text-align:left}
+html.ats .lead,
+html.ats .split p,
+html.ats .gdpr{text-align:left}
+html.ats .split{grid-template-columns:1fr;row-gap:2.4mm}
+html.ats .split > * + *{border-left:0;padding-left:0}
+html.ats .split-head{text-align:left}
+html.ats .contact svg{display:none}
+html.ats a{text-decoration:none}
+
+/* Page 1 is flush to the edge so the masthead band bleeds. Every later page
+   gets a top margin, otherwise the continued text starts against the trim. */
+@page{size:A4;margin:14mm 0 0}
+@page:first{margin:0}
+@media print{
+  body{background:#fff;padding:0}
+  .bar{display:none}
+  .sheet{width:auto;min-height:297mm;margin:0;box-shadow:none}
+}
+
+@media screen and (max-width:800px){
+  body{padding:12px 8px 36px}
+  .sheet{width:100%;min-height:0;font-size:11px}
+  .masthead,.doc,.gdpr{padding-left:16px;padding-right:16px}
+  :root{--fs-name:26px;--fs-sub:14px;--fs-contact:12px;--fs-lead:12px;
+        --fs-h2:16px;--fs-rail:12px;--fs-title:14px;--fs-body:11.5px;
+        --fs-stack:10px;--fs-fine:9px}
+  .row{grid-template-columns:1fr}
+  .row .title,.row .rail,.row .desc{grid-column:1;grid-row:auto;text-align:left}
+  .row .rail{margin:.5mm 0 1.5mm}
+  .split{grid-template-columns:1fr;row-gap:14px}
+  .split > * + *{border-left:0;padding-left:0}
+  .bar{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bar">
+  <button type="button" id="print">Save as PDF</button>
+  <label><input type="checkbox" id="ats"> ATS mode — plain single column</label>
+  <span class="hint">in the print dialog: Margins <b>Default</b> (not None), Background graphics <b>on</b></span>
+</div>
+
+<article class="sheet">
+
+  <header class="masthead">
+    <h1 class="name">Jakub Kierznowski</h1>
+    <p class="sub">Junior Java Backend Developer &nbsp;|&nbsp; Software Developer Intern at IBM</p>
+
+    <p class="contact">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.6"/><path d="m3.6 6.4 8.4 5.6 8.4-5.6"/></svg>
+        jakub.kierznowskiii@gmail.com
+      </span>
+      <span class="pipe">|</span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 4.5h3.2l1.6 4-2 1.4a13 13 0 0 0 5.8 5.8l1.4-2 4 1.6v3.2a1.3 1.3 0 0 1-1.4 1.3A16.5 16.5 0 0 1 4.2 5.9 1.3 1.3 0 0 1 5.5 4.5z"/></svg>
+        +48 662 977 139
+      </span>
+      <span class="pipe">|</span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s6.4-6 6.4-11.4a6.4 6.4 0 1 0-12.8 0C5.6 15 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.4"/></svg>
+        Kraków, on-site / hybrid
+      </span>
+    </p>
+
+    <p class="contact">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2"/><path d="M12 3.4a13.4 13.4 0 0 1 0 17.2 13.4 13.4 0 0 1 0-17.2z"/></svg>
+        <a href="https://github.com/qualv13">github.com/qualv13</a>
+      </span>
+      <span class="pipe">|</span>
+      <span><a href="https://www.linkedin.com/in/jakub-kierznowski/">linkedin.com/in/jakub-kierznowski</a></span>
+      <span class="pipe">|</span>
+      <span><a href="https://qualv13.github.io">qualv13.github.io</a></span>
+      <span class="pipe">|</span>
+      <span><a href="https://instaldesk.pl">instaldesk.pl</a></span>
+    </p>
+
+    <p class="lead">
+      Java and Spring Boot backend developer. At IBM I work on Data Lineage, optimising graph and
+      tree traversal over enterprise metadata. After hours I run InstalDesk, a B2B SaaS I built
+      alone, with a native integration to the Polish KSeF e-invoicing system. Final-year Computer
+      Science and Intelligent Systems at AGH, GPA 4.74/5.00, graduating January 2027.
+    </p>
+  </header>
+
+  <div class="doc">
+
+    <section class="sec">
+      <h2>Experience</h2>
+      <div class="sec-bar"></div>
+
+      <div class="row">
+        <p class="title">Software Developer Intern</p>
+        <div class="rail"><b>IBM Software Lab</b>Kraków &middot; hybrid<br>02.2026 &ndash; present</div>
+        <div class="desc">
+          <p>Backend work in Java and Spring on Data Lineage. I optimise graph and tree traversal
+          over large enterprise metadata graphs. Wrote the automated pytest suite for that pipeline
+          with parametrised cases and session-scoped fixtures; coverage went up and the CI run got
+          shorter. I own the Jenkins job scheduling for it. Daily Scrum, English-speaking
+          cross-functional team.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Solo Developer, InstalDesk</p>
+        <div class="rail"><b>Own product</b><a href="https://instaldesk.pl">instaldesk.pl</a><br>04.2026 &ndash; present</div>
+        <div class="desc">
+          <p>Quoting and VAT-invoicing SaaS for Polish installation contractors. A web PWA and a
+          Windows desktop client share one account. Live, currently v1.9.0.</p>
+          <p>The KSeF integration is native: API v2 against the FA(3) schema, KSeF-token auth on
+          web, XAdES-BES certificate auth on desktop, filed straight to the Ministry of Finance
+          without a third-party integrator. Python and FastAPI on the backend, PostgreSQL in the
+          cloud, SQLite locally so the desktop client keeps working offline. Per-tenant isolation,
+          KSeF tokens encrypted at rest. Stripe billing over BLIK, card and Przelewy24, a 14-day
+          trial without a card, renewal flows, transactional email, PDF generation, XLSX and CSV
+          import and export. I built all of it and I support it.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">IT Team Lead, Web &amp; Workflow Automation</p>
+        <div class="rail"><b>Student Council</b>WRSS WEAIiIB, AGH<br>03.2024 &ndash; present</div>
+        <div class="desc">
+          <p>I maintain the council <a href="https://wrss.eaiib.agh.edu.pl">website</a> (Vue,
+          TailwindCSS) and the VPS it runs on, and built internal automations on self-hosted n8n
+          against Slack and Google APIs over OAuth 2.0. Event coordinator for the VOLT 2025 tech
+          conference, and part of the organising team for VOLT 2026.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Team Mentor &rarr; Community Leader</p>
+        <div class="rail"><b>Zwolnieni z Teorii</b>remote<br>09.2022 &ndash; 05.2025</div>
+        <div class="desc">
+          <p>Mentored 35+ student teams per edition, from planning to the final presentation of
+          their social-impact projects. Later ran a participant community (ZWzT &times; PwC
+          certificate) and supported olympiad entrants.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Game Developer</p>
+        <div class="rail"><b>AGH Code Industry</b>10.2023 &ndash; 06.2024</div>
+        <div class="desc">
+          <p>Gameplay mechanics in Unity and C# for &ldquo;Student Trainer&rdquo;, a game built by a
+          student team under a mentor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>My Projects</h2>
+      <div class="sec-bar"></div>
+
+      <div class="row">
+        <p class="title">DrugPath, biomedical knowledge-graph agent</p>
+        <div class="rail"><b><a href="https://github.com/qualv13/neo4j-agent">neo4j-agent</a></b>
+          <span class="meta">Neo4j Aura Agent Hackathon 2026, top 6</span>
+          <span class="stack">Neo4j Aura, Cypher, Python, LLM agents</span></div>
+        <div class="desc">
+          <p>An agent that walks the Hetionet biomedical graph (47,031 nodes, 293k relationships)
+          along drug &rarr; gene &rarr; pathway &rarr; disease paths to explain how a drug works and
+          where it might be repurposed. Educational project on public research data. Demo at
+          <a href="https://qualv13.github.io/neo4j-agent/">qualv13.github.io/neo4j-agent</a>.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">IoT fleet backend</p>
+        <div class="rail"><b><a href="https://github.com/qualv13/IoTServerApp">IoTServerApp</a></b>
+          <span class="stack">Java 17, Spring Boot 3.3, PostgreSQL, RabbitMQ/MQTT, Protocol Buffers, Docker</span></div>
+        <div class="desc">
+          <p>Backend for managing smart-lamp fleets. JWT auth with refresh tokens, MQTT command and
+          telemetry topics over RabbitMQ, a Protocol Buffers device protocol, OTA firmware delivery
+          from S3, scheduled device jobs. Layered Spring architecture with 15 JUnit 5 test classes
+          covering controllers, services, repositories and security, integration tests on
+          Testcontainers, and a full Docker Compose stack.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Green-window EV charging optimiser</p>
+        <div class="rail"><b><a href="https://github.com/qualv13/CarCharging">CarCharging</a></b>
+          <span class="stack">Java, Spring Boot, REST, Docker</span></div>
+        <div class="desc">
+          <p>Finds the cleanest 48-hour charging window from the UK Carbon Intensity API with a
+          sliding window over half-hourly forecasts, and serves the forecast through a REST API.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">BPM-first workout playlist generator</p>
+        <div class="rail"><b>Fit2Beat</b><span class="meta">HackYeah 2025, top 8 of 65+</span>
+          <span class="stack">Python, Flask, Docker</span></div>
+        <div class="desc">
+          <p>Builds playlists from a target BPM rather than from genre. Nobody else in the
+          biohacking track approached it that way. Team of four, 24 hours, 3.9/5 from the jury.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Skill Set</h2>
+      <div class="sec-bar"></div>
+      <div class="split">
+        <div>
+          <p class="split-head">Tech</p>
+          <p><span class="tag">Core.</span> Java 17, Spring Boot, Spring Security, Hibernate/JPA,
+          Maven, JUnit 5, Testcontainers, PostgreSQL, SQL, REST APIs.</p>
+          <p><span class="tag">Working knowledge.</span> Python (FastAPI, pytest), Docker and
+          Compose, Linux/Bash, Git, Jenkins CI/CD, RabbitMQ, MQTT, Protocol Buffers, OAuth 2.0,
+          Neo4j and Cypher, AWS S3, algorithms and data structures.</p>
+          <p><span class="tag">Also used.</span> Vue with TailwindCSS, C# (Unity), C++, n8n, LLM
+          APIs, self-hosted models (Ollama), TensorFlow, scikit-learn.</p>
+        </div>
+        <div>
+          <p class="split-head">Soft</p>
+          <p>Agile and Kanban, daily Scrum in a cross-functional English-speaking team. Team mentor
+          at <a href="https://zwolnienizteorii.pl">Zwolnieni z Teorii</a> for three editions, 35+
+          teams each. Lead event coordinator for the <a href="https://volt.agh.edu.pl">VOLT 2025</a>
+          conference, including partnership deals with tech companies. I ship my own product and
+          handle its support and user contact myself.</p>
+          <p>Languages: Polish native, English C1 (working language at IBM), French A2.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Education</h2>
+      <div class="sec-bar"></div>
+
+      <div class="row">
+        <p class="title">Computer Science and Intelligent Systems, BEng</p>
+        <div class="rail"><b>AGH University</b>Kraków<br>10.2023 &ndash; 01.2027</div>
+        <div class="desc">
+          <p>GPA 4.74/5.00. Year Representative since the 1st semester, Student Council since the
+          2nd. Engineering thesis: applying deep learning to 2D-image to 3D-mesh conversion.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Extended Mathematics, Physics and Computer Science</p>
+        <div class="rail"><b>V High School</b>Kraków<br>2019 &ndash; 2023</div>
+        <div class="desc">
+          <p>C++, competitive-programming problem solving.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="split">
+        <div>
+          <h2>Certifications</h2>
+          <div class="sec-bar"></div>
+          <p><span class="tag"><a href="https://graphacademy.neo4j.com/c/6c4023ef-a651-4de9-80cd-bb064f5a7b0b/">Neo4j Certified Professional</a></span>
+          and <a href="https://graphacademy.neo4j.com/c/e6140917-3cff-415a-a1b9-7de97e0c3735/">Building Agents in Neo4j Aura</a>, both 2026.</p>
+          <p><span class="tag">Amazon Junior Software Developer</span>
+          (<a href="https://www.coursera.org/account/accomplishments/specialization/2WMO8NM17ZSA">Coursera specialisation</a>):
+          Data Structures and Algorithms, Programming with Java, Application Development.</p>
+        </div>
+        <div>
+          <h2>Interests</h2>
+          <div class="sec-bar"></div>
+          <p>Snowboarding, sailing, a self-hosted homelab with Docker and quantised local models on
+          a Raspberry Pi and a VPS, game dev, board games.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="gdpr">
+    <p>I hereby give consent for my personal data included in my application to be processed for the
+    purposes of the recruitment process under Regulation (EU) 2016/679 of the European Parliament and
+    of the Council of 27 April 2016 on the protection of natural persons with regard to the processing
+    of personal data and on the free movement of such data, and repealing Directive 95/46/EC.</p>
+  </div>
+</article>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var box  = document.getElementById('ats');
+
+  if (/[?&]ats\b/.test(location.search)) { root.classList.add('ats'); box.checked = true; }
+  box.addEventListener('change', function () { root.classList.toggle('ats', box.checked); });
+  document.getElementById('print').addEventListener('click', function () { window.print(); });
+})();
+</script>
+
+</body>
+</html>

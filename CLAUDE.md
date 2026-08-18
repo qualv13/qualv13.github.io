@@ -16,8 +16,9 @@ decisions change.
   co-author / Co-Authored-By lines.**
 - All site text lives in `src/data/content.ts` — components only render
   data. Edit content there, not in components.
-- This repo is public: no secrets, no tokens, and the owner's phone number
-  stays off the site and out of the repo.
+- This repo is public: no secrets, no tokens. The owner's phone number stays
+  off the rendered site, but **is allowed in `public/cv/`** — it belongs on a
+  CV and the exported PDF there already carries it (owner's call, 08.2026).
 
 ## Commands
 

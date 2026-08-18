@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jakub Kierznowski — CV</title>
+<meta name="description" content="CV of Jakub Kierznowski — Java / Spring Boot backend developer, Software Developer Intern at IBM.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#030308;
+  --panel:#0b0b13;
+  --yellow:#fcee0a;
+  --cyan:#00f0ff;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:var(--bg);color:rgba(255,255,255,.55);
+  font:400 14px/1.5 var(--mono);
+  display:flex;flex-direction:column;
+}
+
+.bar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;
+  padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.1);
+  background:rgba(3,3,8,.9);
+}
+.bar a{color:inherit;text-decoration:none}
+.home{color:rgba(255,255,255,.7)}
+.home b{color:var(--cyan);font-weight:400}
+.home:hover{color:#fff}
+.title{color:rgba(255,255,255,.35);font-size:12px}
+.actions{margin-left:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{
+  border:1px solid var(--yellow);background:var(--yellow);color:#000;
+  font-weight:700;padding:7px 14px;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%);
+}
+.btn:hover{box-shadow:0 0 22px rgba(252,238,10,.5)}
+.ghost{border:1px solid rgba(255,255,255,.2);padding:7px 14px;color:rgba(255,255,255,.6)}
+.ghost:hover{border-color:rgba(0,240,255,.6);color:var(--cyan)}
+
+.doc{flex:1;min-height:0;background:var(--panel)}
+.doc object,.doc embed{width:100%;height:100%;border:0;display:block}
+
+/* Shown only when the browser has no PDF viewer to hand the <object> to —
+   phones mostly, where the fallback content inside <object> is what renders. */
+.fallback{padding:44px 20px;text-align:center}
+.fallback h1{margin:0 0 6px;font-size:19px;color:#fff;font-weight:700}
+.fallback p{margin:0 auto 22px;max-width:34em;font-size:13px;line-height:1.65;color:rgba(255,255,255,.55)}
+.fallback .btn,.fallback .ghost{display:inline-block;margin:5px}
+
+@media (max-width:600px){
+  .bar{padding:12px 14px;gap:10px 12px}
+  .title{display:none}
+  .actions{margin-left:0;width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bar">
+  <a class="home" href="../"><b>jakub</b>@netrunner:~</a>
+  <span class="title">// cv.pdf</span>
+  <span class="actions">
+    <a class="btn" href="Jakub-Kierznowski-CV.pdf" download>↓ download PDF</a>
+    <a class="ghost" href="source.html">html version</a>
+  </span>
+</div>
+
+<div class="doc">
+  <object data="Jakub-Kierznowski-CV.pdf#zoom=100" type="application/pdf">
+    <div class="fallback">
+      <h1>Jakub Kierznowski — CV</h1>
+      <p>This browser will not display a PDF inline. Open the file directly, or read
+      the HTML version — same content, and it reads better on a small screen.</p>
+      <a class="btn" href="Jakub-Kierznowski-CV.pdf">open the PDF</a>
+      <a class="ghost" href="source.html">read the HTML version</a>
+    </div>
+  </object>
+</div>
+
+</body>
+</html>

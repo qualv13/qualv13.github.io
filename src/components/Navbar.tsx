@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { label: "./contact", href: "#contact" },
 ] as const;
 
-const CV_URL = `${import.meta.env.BASE_URL}${profile.cvFile}`;
+const CV_PAGE = `${import.meta.env.BASE_URL}${profile.cvPage}`;
 
 export default function Navbar(props: { onTerminal: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,7 +35,7 @@ export default function Navbar(props: { onTerminal: () => void }) {
           ))}
           {/* CV stands out on purpose — the link recruiters are looking for. */}
           <a
-            href={CV_URL}
+            href={CV_PAGE}
             target="_blank"
             rel="noreferrer"
             className="clip-corner-sm border border-cyber-yellow bg-cyber-yellow px-3 py-1 font-bold text-black transition hover:shadow-[0_0_22px_rgba(252,238,10,0.5)]"
@@ -76,7 +76,7 @@ export default function Navbar(props: { onTerminal: () => void }) {
             </a>
           ))}
           <a
-            href={CV_URL}
+            href={CV_PAGE}
             target="_blank"
             rel="noreferrer"
             className="clip-corner-sm mt-2 w-fit border border-cyber-yellow bg-cyber-yellow px-3 py-1.5 font-bold text-black"

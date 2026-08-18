@@ -31,11 +31,15 @@ export const profile = {
     "Currently optimizing Data Lineage with graph algorithms in Java at IBM Kraków " +
     "and building my own SaaS on the side.",
   location: "Kraków, Poland",
-  workMode: "on-site · hybrid · remote",
+  workMode: "on-site · hybrid",
   availability: "Open to Junior Java roles",
   email: "jakub.kierznowskiii@gmail.com",
   /** Served from public/cv/ — path resolved against Vite's base URL. */
   cvFile: "cv/Jakub-Kierznowski-CV.pdf",
+  /** Viewer page that embeds that PDF — what ./CV in the navbar opens.
+   *  Spelled out to index.html on purpose: Vite's dev server has no directory
+   *  index for public/, so a bare "cv/" serves the SPA locally. */
+  cvPage: "cv/index.html",
   links: {
     github: "https://github.com/qualv13",
     linkedin: "https://www.linkedin.com/in/jakub-kierznowski/",
@@ -73,26 +77,25 @@ export const coreStack = [
 
 export const about = {
   paragraphs: [
-    "Computer Science & Intelligent Systems student at AGH University of Krakow, " +
-      "genuinely excited about coding, problem-solving and all things tech. " +
-      "Especially into Java, Python, graph data and neural networks — always exploring " +
-      "tools that turn concepts into something real.",
-    "At IBM Software Lab I work on Data Lineage: optimizing performance with advanced " +
-      "graph and tree algorithms in Java Spring, right where big graph data meets LLMs. " +
-      "Outside work I lead the IT team of my faculty's Student Council (WRSS WEAIiIB), " +
-      "running our technical infrastructure and automation.",
-    "After hours you'll find me feeding another Docker container to my Raspberry Pi " +
-      "home lab, where I self-host quantized LLMs and n8n workflows on my own VPS.",
+    "Computer Science & Intelligent Systems student at AGH University of Krakow. " +
+      "I work mostly in Java and Python, and the parts I keep coming back to are " +
+      "graph data and neural networks.",
+    "At IBM Software Lab I work on Data Lineage, optimizing performance with graph and " +
+      "tree algorithms in Java Spring over large enterprise metadata graphs. Outside work " +
+      "I lead the IT team of my faculty's Student Council (WRSS WEAIiIB), running our " +
+      "infrastructure and automation.",
+    "After hours it's the home lab: a Raspberry Pi and a VPS where I self-host quantized " +
+      "LLMs and n8n workflows.",
   ],
   drives: [
-    "clean, testable, purposeful code",
+    "clean, testable code",
     "graph data & AI integration",
-    "tech that solves real-world problems",
-    "mentoring, teamwork & community",
+    "software with actual users",
+    "mentoring & teamwork",
   ],
   quickFacts: [
-    { key: "base", value: "Kraków, PL (hybrid/remote friendly)" },
-    { key: "degree", value: "BE Computer Science & Intelligent Systems, 2023–2027" },
+    { key: "base", value: "Kraków, PL (on-site / hybrid)" },
+    { key: "degree", value: "BE Computer Science & Intelligent Systems, Oct 2023 – Jan 2027" },
     { key: "gpa", value: "4.74/5.00 · Year Representative since 1st semester" },
     { key: "thesis", value: "deep learning for 2D-to-3D mesh conversion" },
     { key: "languages", value: "Polish native · English C1 · French A2" },
@@ -118,10 +121,10 @@ export const experience: readonly ExperienceEntry[] = [
     meta: "Kraków · hybrid",
     current: true,
     bullets: [
-      "Optimizing Data Lineage performance with advanced graph and tree algorithms in Java Spring — working where big graph data meets LLMs.",
-      "Built automated test suites in Python/pytest with advanced fixtures, boosting coverage 5% and cutting pipeline runtime 10%.",
+      "Optimizing Data Lineage performance with graph and tree algorithms in Java Spring, over large enterprise metadata graphs.",
+      "Built automated test suites in Python/pytest with parametrised and session-scoped fixtures; coverage went up and the CI run got shorter.",
       "Managing CI/CD via Jenkins job scheduling on cloud infrastructure.",
-      "Daily Agile/Scrum with cross-functional teams; enterprise architecture best practices via internal tech talks.",
+      "Daily Agile/Scrum with cross-functional teams; enterprise architecture knowledge sharing via internal tech talks.",
     ],
     tags: ["Java", "Spring", "Graph Algorithms", "Python", "pytest", "Jenkins"],
   },
@@ -133,7 +136,7 @@ export const experience: readonly ExperienceEntry[] = [
     current: true,
     bullets: [
       "Develop and maintain the faculty council website (Vue, TailwindCSS, JavaScript).",
-      "Build workflow automations with self-hosted n8n on my own VPS — Slack, Google API, OAuth2.0.",
+      "Build workflow automations with self-hosted n8n on my own VPS: Slack, Google API, OAuth2.0.",
       "Create event-management tools; coordinate partner relations, fundraising and the council's LinkedIn presence.",
     ],
     tags: ["Vue", "TailwindCSS", "n8n", "OAuth2.0", "Leadership"],
@@ -163,7 +166,7 @@ export const experience: readonly ExperienceEntry[] = [
   {
     company: "AGH Code Industry",
     role: "Game Developer",
-    period: "Nov 2023 — Mar 2025",
+    period: "Oct 2023 — Jun 2024",
     meta: "student game-dev group",
     bullets: [
       "Developed interactive mechanics and features for the game “Student-trainer” in Unity/C# with a mentored team.",
@@ -190,9 +193,9 @@ export const projects: readonly Project[] = [
     year: "2026",
     badge: "Neo4j Aura Agent Hackathon · TOP 6",
     description:
-      "Biomedical AI agent that navigates a knowledge graph to explain drug mechanisms, " +
-      "interactions and repurposing hypotheses. The graph stores relationships between facts — " +
-      "that's where non-obvious (and dangerous) connections emerge. Educational project on public research data.",
+      "Biomedical AI agent that walks a knowledge graph along drug → gene → pathway → disease " +
+      "paths to explain drug mechanisms, interactions and repurposing hypotheses. " +
+      "Educational project on public research data.",
     stats: "47,031 nodes · 293k relationships · 1 traversable graph",
     tech: ["Neo4j Aura", "Cypher", "AI Agents", "Python"],
     links: {
@@ -203,12 +206,14 @@ export const projects: readonly Project[] = [
   {
     name: "InstalDesk",
     year: "2026",
-    badge: "solo SaaS · in development",
+    badge: "solo SaaS · live v1.9.0",
     description:
-      "Desktop invoicing app for Polish contractors: KSeF e-invoicing integration, Stripe " +
-      "subscription payments, offline-first architecture, email activation and subscription " +
-      "reminders. Designed, built and shipped end-to-end solo.",
-    tech: ["Python", "FastAPI", "Stripe", "KSeF API"],
+      "Quoting and VAT-invoicing SaaS for Polish installation contractors: a web PWA and a " +
+      "Windows desktop client on one account. Native KSeF integration (API v2, FA(3) schema, " +
+      "XAdES-BES certificate auth) filed straight to the Ministry of Finance with no third-party " +
+      "integrator, Stripe subscription billing, per-tenant isolation and offline-first local " +
+      "storage. I built all of it and I support it.",
+    tech: ["Python", "FastAPI", "PostgreSQL", "SQLite", "Stripe", "KSeF API"],
     links: { demo: "https://instaldesk.pl" },
     private: true,
   },
@@ -219,7 +224,8 @@ export const projects: readonly Project[] = [
     description:
       "Backend platform for managing fleets of IoT smart lamps: JWT auth, real-time MQTT " +
       "communication via RabbitMQ, OTA firmware delivery, telemetry ingestion and fleet " +
-      "management. Containerized with Docker Compose.",
+      "management. 15 JUnit 5 test classes covering controllers, services, repositories and " +
+      "security, with Testcontainers-backed integration tests. Containerized with Docker Compose.",
     tech: ["Java", "Spring Boot", "MQTT", "RabbitMQ", "PostgreSQL", "Protobuf", "AWS S3", "Docker"],
     links: {
       github: "https://github.com/qualv13/IoTServerApp",
@@ -243,18 +249,19 @@ export const projects: readonly Project[] = [
     year: "2025",
     badge: "HackYeah 2025 · TOP 8",
     description:
-      "Workout playlist generator matched to BPM preferences — the unusual approach in the " +
-      "biohacking track. Built in 24h with a team of four; scored 3.9/5 and placed TOP 8 " +
-      "of 65+ projects at Poland's biggest hackathon.",
+      "Workout playlist generator matched to BPM preferences. Nobody else in the biohacking " +
+      "track built it that way. 24 hours, team of four, 3.9/5 from the jury, TOP 8 of 65+ " +
+      "projects at Poland's biggest hackathon.",
     tech: ["Python", "Flask", "Docker"],
-    links: {},
+    links: { demo: "https://fit2beat.toadres.pl" },
   },
   {
     name: "hardware-hub",
     year: "2026",
     description:
-      "AI-native internal hardware rental & inventory hub — agent-friendly tooling for tracking " +
-      "equipment, availability and hand-offs.",
+      "AI-native internal hardware rental and inventory hub: semantic search, an inventory " +
+      "auditor, and Gemini tool-calling with a deterministic fallback behind every call. " +
+      "Built for the Booksy AI-Native assessment.",
     tech: ["Python", "AI Agents"],
     links: {
       github: "https://github.com/qualv13/hardware-hub",
@@ -413,7 +420,7 @@ export const education = [
   {
     school: "AGH University of Krakow",
     degree: "BE, Computer Science & Intelligent Systems",
-    period: "2023 — 2027",
+    period: "Oct 2023 — Jan 2027",
     detail:
       "GPA 4.74/5.00 · Year Representative since 1st semester · Student Council since 2nd. " +
       "Engineering thesis: applying deep learning to 2D-to-3D mesh conversion.",
