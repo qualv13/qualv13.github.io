@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jakub Kierznowski — CV</title>
-<meta name="description" content="CV — Jakub Kierznowski. Java / Spring Boot backend developer. Software Developer Intern at IBM, CS &amp; Intelligent Systems at AGH, solo developer of InstalDesk.">
+<meta name="description" content="CV — Jakub Kierznowski. Backend engineer working in Java and Python. Software Developer Intern at IBM, CS &amp; Intelligent Systems at AGH, solo developer of InstalDesk.">
 <meta name="robots" content="noindex">
 
 <!--
@@ -96,6 +96,9 @@ body{margin:0;padding:22px 14px 60px;background:#3a3d41;font-family:var(--sans)}
   margin:3.4mm 0 0;font-size:var(--fs-lead);color:var(--body);
   text-align:justify;hyphens:auto;
 }
+/* keyword line: the header no longer names a stack, this carries it */
+.stackbar{margin:2.6mm 0 0;font-size:var(--fs-lead);color:var(--ink)}
+.note{margin:0 0 2.4mm;font-size:var(--fs-stack);color:var(--mute)}
 
 .doc{flex:1;padding:2.5mm var(--pad-x) 4mm}
 .sec{margin-bottom:3.4mm}
@@ -128,6 +131,9 @@ h2{
   text-align:justify;hyphens:auto}
 .row .desc p{margin:0 0 .8mm}
 .row .desc p:last-child{margin:0}
+.row .desc ul{margin:0;padding-left:3.4mm}
+.row .desc li{margin:0 0 .8mm}
+.row .desc li:last-child{margin:0}
 
 .split{display:grid;grid-template-columns:1fr 1fr;column-gap:8mm}
 .split > * + *{border-left:.4mm solid var(--divider);padding-left:8mm}
@@ -216,7 +222,7 @@ html.ats a{text-decoration:none}
 
   <header class="masthead">
     <h1 class="name">Jakub Kierznowski</h1>
-    <p class="sub">Junior Java Backend Developer &nbsp;|&nbsp; Software Developer Intern at IBM</p>
+    <p class="sub">Junior Software Engineer &nbsp;|&nbsp; Software Developer Intern at IBM<br>CS &amp; Intelligent Systems Student at AGH</p>
 
     <p class="contact">
       <span>
@@ -249,11 +255,16 @@ html.ats a{text-decoration:none}
     </p>
 
     <p class="lead">
-      Java and Spring Boot backend developer. At IBM I work on Data Lineage, optimising graph and
-      tree traversal over enterprise metadata. After hours I run InstalDesk, a B2B SaaS I built
-      alone, with a native integration to the Polish KSeF e-invoicing system. Final-year Computer
-      Science and Intelligent Systems at AGH, GPA 4.74/5.00, graduating January 2027.
+      Backend engineer working in Java and Python, drawn to graph data and to code that ships with
+      tests. At IBM I optimise graph and tree traversal in Data Lineage over enterprise metadata.
+      After hours I build and support InstalDesk, a live B2B SaaS with a native integration to the
+      Polish KSeF e-invoicing system. Final-year Computer Science and Intelligent Systems at AGH,
+      GPA 4.74/5.00, graduating January 2027.
     </p>
+
+    <p class="stackbar">Java 21 &middot; Spring Boot &middot; Spring Security &middot; PostgreSQL
+      &middot; Neo4j &middot; Python &middot; FastAPI &middot; Docker &middot; Testcontainers
+      &middot; Jenkins</p>
   </header>
 
   <div class="doc">
@@ -264,29 +275,16 @@ html.ats a{text-decoration:none}
 
       <div class="row">
         <p class="title">Software Developer Intern</p>
-        <div class="rail"><b>IBM Software Lab</b>Kraków &middot; hybrid<br>Part-time, 110 h/month (11/16)<br>Feb 2026 &ndash; Present</div>
+        <div class="rail"><b>IBM Software Lab</b>Kraków &middot; hybrid<br>Part-time<br>Feb 2026 &ndash; Present</div>
         <div class="desc">
-          <p>Backend work in Java and Spring on Data Lineage. I optimise graph and tree traversal
-          over large enterprise metadata graphs. Wrote the automated pytest suite for that pipeline
-          with parametrised cases and session-scoped fixtures; coverage went up and the CI run got
-          shorter. I own the Jenkins job scheduling for it. Daily Scrum, English-speaking
-          cross-functional team.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <p class="title">Solo Developer, InstalDesk</p>
-        <div class="rail"><b>Own product</b><a href="https://instaldesk.pl">instaldesk.pl</a><br>Apr 2026 &ndash; Present</div>
-        <div class="desc">
-          <p>Quoting and VAT-invoicing SaaS for Polish installation contractors. A web PWA and a
-          Windows desktop client share one account. Live, currently v1.9.0.</p>
-          <p>The KSeF integration is native: API v2 against the FA(3) schema, KSeF-token auth on
-          web, XAdES-BES certificate auth on desktop, filed straight to the Ministry of Finance
-          without a third-party integrator. Python and FastAPI on the backend, PostgreSQL in the
-          cloud, SQLite locally so the desktop client keeps working offline. Per-tenant isolation,
-          KSeF tokens encrypted at rest. Stripe billing over BLIK, card and Przelewy24, a 14-day
-          trial without a card, renewal flows, transactional email, PDF generation, XLSX and CSV
-          import and export. I built all of it and I support it.</p>
+          <ul>
+            <li>Java and Spring on Data Lineage: graph and tree traversal over large enterprise
+            metadata graphs. Scale and internals are covered by IBM confidentiality.</li>
+            <li>Built the automated pytest suite for that pipeline &mdash; parametrised cases,
+            session-scoped fixtures, async execution. Cut the run from 20 minutes to 4.</li>
+            <li>Own the Jenkins job scheduling for the pipeline.</li>
+            <li>Daily Scrum in an English-speaking cross-functional team.</li>
+          </ul>
         </div>
       </div>
 
@@ -326,6 +324,40 @@ html.ats a{text-decoration:none}
     <section class="sec">
       <h2>Projects</h2>
       <div class="sec-bar"></div>
+      <p class="note">Code at github.com/qualv13/&lt;repo&gt;</p>
+
+      <div class="row">
+        <p class="title">InstalDesk, B2B SaaS for Polish installation contractors</p>
+        <div class="rail"><b><a href="https://instaldesk.pl">instaldesk.pl</a></b>
+          <span class="meta">live since Apr 2026, v1.9.0, pilot users</span>
+          <span class="stack">Python, FastAPI, PostgreSQL, SQLite, Stripe, KSeF API</span></div>
+        <div class="desc">
+          <ul>
+            <li>Native KSeF integration: API v2 against the FA(3) schema, KSeF-token auth on web,
+            XAdES-BES certificate auth on desktop &mdash; filed straight to the Ministry of Finance,
+            without a third-party integrator.</li>
+            <li>A web PWA and a Windows desktop client share one account. PostgreSQL in the cloud,
+            SQLite locally so the desktop client keeps working offline.</li>
+            <li>Per-tenant isolation, KSeF tokens encrypted at rest. Stripe billing over card, BLIK
+            and Przelewy24, a 14-day trial without a card, renewal flows, transactional email, PDF
+            generation, XLSX and CSV import and export.</li>
+            <li>Built and supported solo, including user contact.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">IoT fleet backend</p>
+        <div class="rail"><b><a href="https://github.com/qualv13/IoTServerApp">IoTServerApp</a></b>
+          <span class="stack">Java 17, Spring Boot 3.3, PostgreSQL, RabbitMQ/MQTT, Protocol Buffers, Docker</span></div>
+        <div class="desc">
+          <p>Layered Spring backend for managing smart-lamp fleets, with 15 JUnit 5 test classes
+          across controllers, services, repositories and security, and integration tests on
+          Testcontainers. JWT auth with refresh tokens, MQTT command and telemetry topics over
+          RabbitMQ, a Protocol Buffers device protocol, OTA firmware delivery from S3, scheduled
+          device jobs. Full Docker Compose stack.</p>
+        </div>
+      </div>
 
       <div class="row">
         <p class="title">DrugPath, biomedical knowledge-graph agent</p>
@@ -337,29 +369,6 @@ html.ats a{text-decoration:none}
           along drug &rarr; gene &rarr; pathway &rarr; disease paths to explain how a drug works and
           where it might be repurposed. Educational project on public research data. Demo at
           <a href="https://qualv13.github.io/neo4j-agent/">qualv13.github.io/neo4j-agent</a>.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <p class="title">IoT fleet backend</p>
-        <div class="rail"><b><a href="https://github.com/qualv13/IoTServerApp">IoTServerApp</a></b>
-          <span class="stack">Java 17, Spring Boot 3.3, PostgreSQL, RabbitMQ/MQTT, Protocol Buffers, Docker</span></div>
-        <div class="desc">
-          <p>Backend for managing smart-lamp fleets. JWT auth with refresh tokens, MQTT command and
-          telemetry topics over RabbitMQ, a Protocol Buffers device protocol, OTA firmware delivery
-          from S3, scheduled device jobs. Layered Spring architecture with 15 JUnit 5 test classes
-          covering controllers, services, repositories and security, integration tests on
-          Testcontainers, and a full Docker Compose stack.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <p class="title">Green-window EV charging optimiser</p>
-        <div class="rail"><b><a href="https://github.com/qualv13/CarCharging">CarCharging</a></b>
-          <span class="stack">Java, Spring Boot, REST, Docker</span></div>
-        <div class="desc">
-          <p>Finds the cleanest 48-hour charging window from the UK Carbon Intensity API with a
-          sliding window over half-hourly forecasts, and serves the forecast through a REST API.</p>
         </div>
       </div>
 
@@ -387,13 +396,25 @@ html.ats a{text-decoration:none}
       </div>
 
       <div class="row">
-        <p class="title">Deep learning coursework</p>
+        <p class="title">Green-window EV charging optimiser</p>
+        <div class="rail"><b><a href="https://github.com/qualv13/CarCharging">CarCharging</a></b>
+          <span class="stack">Java, Spring Boot, REST, Docker</span></div>
+        <div class="desc">
+          <p>Finds the cleanest 48-hour charging window from the UK Carbon Intensity API with a
+          sliding window over half-hourly forecasts, and serves the forecast through a REST API.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Graph and deep neural networks</p>
         <div class="rail"><b><a href="https://github.com/qualv13/GGSN">GGSN</a></b>
+          <span class="meta">Graph and Deep Neural Networks, AGH coursework</span>
           <span class="stack">PyTorch, TensorFlow, scikit-learn</span></div>
         <div class="desc">
-          <p>Transfer learning with Grad-CAM explanations, DistilBERT sentiment classification,
-          graph neural networks (GCN, GAT, GraphSAGE, GIN) over the Yelp dataset, and network
-          compression by pruning, quantization and distillation across seven architectures.</p>
+          <p>Graph neural networks (GCN, GAT, GraphSAGE, GIN) over the Yelp dataset, benchmarked
+          against one another. Transfer learning with Grad-CAM explanations and DistilBERT sentiment
+          classification. Network compression by pruning, quantisation and distillation across seven
+          architectures, compared on accuracy against model size.</p>
         </div>
       </div>
     </section>
@@ -404,21 +425,20 @@ html.ats a{text-decoration:none}
       <div class="split">
         <div>
           <p class="split-head">Tech</p>
-          <p><span class="tag">Core.</span> Java 17, Spring Boot, Spring Security, Hibernate/JPA,
+          <p><span class="tag">Core:</span> Java 21, Spring Boot, Spring Security, Hibernate/JPA,
           Maven, JUnit 5, Testcontainers, PostgreSQL, SQL, REST APIs.</p>
-          <p><span class="tag">Working knowledge.</span> Python (FastAPI, pytest), Docker and
+          <p><span class="tag">Working knowledge:</span> Python (FastAPI, pytest), Docker and
           Compose, Linux/Bash, Git, Jenkins CI/CD, RabbitMQ, MQTT, Protocol Buffers, OAuth 2.0,
           Neo4j and Cypher, AWS S3, algorithms and data structures.</p>
-          <p><span class="tag">Also used.</span> Vue with TailwindCSS, C# (Unity), C++, n8n, LLM
+          <p><span class="tag">Also used:</span> Vue with TailwindCSS, C# (Unity), C++, n8n, LLM
           APIs, self-hosted models (Ollama), TensorFlow, scikit-learn.</p>
         </div>
         <div>
           <p class="split-head">Soft</p>
-          <p>Agile and Kanban, daily Scrum in a cross-functional English-speaking team. Team mentor
-          at <a href="https://zwolnienizteorii.pl">Zwolnieni z Teorii</a> for three editions, 35+
-          teams each. Lead event coordinator for the <a href="https://volt.agh.edu.pl">VOLT 2025</a>
-          conference, including partnership deals with tech companies. I ship my own product and
-          handle its support and user contact myself.</p>
+          <p>Agile and Kanban, daily Scrum in a cross-functional English-speaking team. Lead
+          event coordinator for the <a href="https://volt.agh.edu.pl">VOLT 2025</a> conference,
+          including partnership deals with tech companies. I ship my own product and handle its
+          support and user contact myself.</p>
           <p>Languages: Polish native, English C1 (working language at IBM), French A2.</p>
         </div>
       </div>
@@ -430,7 +450,7 @@ html.ats a{text-decoration:none}
 
       <div class="row">
         <p class="title">Computer Science and Intelligent Systems, BEng</p>
-        <div class="rail"><b>AGH University</b>Kraków<br>Oct 2023 &ndash; Jan 2027</div>
+        <div class="rail"><b>AGH University of Krakow</b>Kraków<br>Oct 2023 &ndash; Jan 2027</div>
         <div class="desc">
           <p>GPA 4.74/5.00. Year Representative since the 1st semester, Student Council since the
           2nd. Engineering thesis: applying deep learning to 2D-image to 3D-mesh conversion.</p>
