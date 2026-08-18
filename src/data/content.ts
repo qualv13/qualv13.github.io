@@ -131,10 +131,11 @@ export const experience: readonly ExperienceEntry[] = [
   {
     company: "WRSS WEAIiIB · AGH Faculty Students Council",
     role: "IT Team Lead · Web & Workflow Automation",
-    period: "Mar 2024 — present",
+    period: "Mar 2025 — present",
     meta: "Kraków",
     current: true,
     bullets: [
+      "In the council since Mar 2024, leading its IT team since Mar 2025.",
       "Develop and maintain the faculty council website (Vue, TailwindCSS, JavaScript).",
       "Build workflow automations with self-hosted n8n on my own VPS: Slack, Google API, OAuth2.0.",
       "Create event-management tools; coordinate partner relations, fundraising and the council's LinkedIn presence.",
@@ -166,7 +167,7 @@ export const experience: readonly ExperienceEntry[] = [
   {
     company: "AGH Code Industry",
     role: "Game Developer",
-    period: "Oct 2023 — Jun 2024",
+    period: "Dec 2023 — Jun 2024",
     meta: "student game-dev group",
     bullets: [
       "Developed interactive mechanics and features for the game “Student-trainer” in Unity/C# with a mentored team.",
@@ -397,7 +398,7 @@ export const achievements: readonly Achievement[] = [
   },
   {
     title: "VOLT 2025 — Coordinator",
-    detail: "Co-organized AGH's two-day tech conference: talks, workshops, industry partners",
+    detail: "Co-organized AGH's two-day tech conference: talks, workshops, and eight partner companies including Aptiv, PwC Polska and Cytiva",
     year: "2025",
     kind: "leadership",
   },

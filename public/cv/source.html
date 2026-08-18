@@ -36,11 +36,11 @@
   --fs-name:30pt;
   --fs-sub:13pt;
   --fs-contact:10pt;
-  --fs-lead:8.9pt;
-  --fs-h2:14.5pt;
-  --fs-rail:10.4pt;
-  --fs-title:12.4pt;
-  --fs-body:8.6pt;
+  --fs-lead:8.4pt;
+  --fs-h2:13.4pt;
+  --fs-rail:9.8pt;
+  --fs-title:11.6pt;
+  --fs-body:8.1pt;
   --fs-stack:7pt;
   --fs-fine:6.2pt;
 }
@@ -98,7 +98,7 @@ body{margin:0;padding:22px 14px 60px;background:#3a3d41;font-family:var(--sans)}
 }
 
 .doc{flex:1;padding:5mm var(--pad-x) 4mm}
-.sec{margin-bottom:4.2mm}
+.sec{margin-bottom:3.4mm}
 .sec:last-child{margin-bottom:0}
 h2{
   margin:0;font-size:var(--fs-h2);font-weight:700;line-height:1;
@@ -114,7 +114,7 @@ h2{
   display:grid;
   grid-template-columns:var(--rail) 1fr;
   column-gap:var(--gutter);
-  margin-bottom:3.2mm;break-inside:avoid;
+  margin-bottom:2.6mm;break-inside:avoid;
 }
 .row:last-child{margin-bottom:0}
 .row .title{grid-column:2;grid-row:1;margin:0;
@@ -264,7 +264,7 @@ html.ats a{text-decoration:none}
 
       <div class="row">
         <p class="title">Software Developer Intern</p>
-        <div class="rail"><b>IBM Software Lab</b>Kraków &middot; hybrid<br>Feb 2026 &ndash; Present</div>
+        <div class="rail"><b>IBM Software Lab</b>Kraków &middot; hybrid &middot; part-time<br>Feb 2026 &ndash; Present</div>
         <div class="desc">
           <p>Backend work in Java and Spring on Data Lineage. I optimise graph and tree traversal
           over large enterprise metadata graphs. Wrote the automated pytest suite for that pipeline
@@ -292,12 +292,14 @@ html.ats a{text-decoration:none}
 
       <div class="row">
         <p class="title">IT Team Lead, Web &amp; Workflow Automation</p>
-        <div class="rail"><b>Student Council</b>WRSS WEAIiIB, AGH<br>Mar 2024 &ndash; Present</div>
+        <div class="rail"><b>Student Council</b>WRSS WEAIiIB, AGH<br>Mar 2025 &ndash; Present</div>
         <div class="desc">
-          <p>I maintain the council <a href="https://wrss.eaiib.agh.edu.pl">website</a> (Vue,
-          TailwindCSS) and the VPS it runs on, and built internal automations on self-hosted n8n
-          against Slack and Google APIs over OAuth 2.0. Event coordinator for the VOLT 2025 tech
-          conference, and part of the organising team for VOLT 2026.</p>
+          <p>Council member since Mar 2024, leading its IT team since Mar 2025. I maintain the
+          council <a href="https://wrss.eaiib.agh.edu.pl">website</a> (Vue, TailwindCSS) and the
+          VPS it runs on, and built internal automations on self-hosted n8n against Slack and
+          Google APIs over OAuth 2.0. Event coordinator for the VOLT 2025 tech conference,
+          eight partner companies including Aptiv, PwC Polska and Cytiva, and part of the
+          organising team for VOLT 2026.</p>
         </div>
       </div>
 
@@ -313,7 +315,7 @@ html.ats a{text-decoration:none}
 
       <div class="row">
         <p class="title">Game Developer</p>
-        <div class="rail"><b>AGH Code Industry</b>Oct 2023 &ndash; Jun 2024</div>
+        <div class="rail"><b>AGH Code Industry</b>Dec 2023 &ndash; Jun 2024</div>
         <div class="desc">
           <p>Gameplay mechanics in Unity and C# for &ldquo;Student Trainer&rdquo;, a game built by a
           student team under a mentor.</p>
@@ -362,12 +364,36 @@ html.ats a{text-decoration:none}
       </div>
 
       <div class="row">
+        <p class="title">AI-native hardware rental and inventory hub</p>
+        <div class="rail"><b><a href="https://github.com/qualv13/hardware-hub">hardware-hub</a></b>
+          <span class="meta">Booksy technical assessment</span>
+          <span class="stack">Python, FastAPI, Vue, Gemini, Docker</span></div>
+        <div class="desc">
+          <p>Internal tool for tracking equipment, availability and hand-offs: semantic search over
+          the inventory, an auditor that flags inconsistent records, and Gemini tool-calling for
+          repairs. Every AI call has a deterministic fallback, so the product still works when the
+          model does not.</p>
+        </div>
+      </div>
+
+      <div class="row">
         <p class="title">BPM-first workout playlist generator</p>
         <div class="rail"><b>Fit2Beat</b><span class="meta">HackYeah 2025, top 8 of 65+</span>
           <span class="stack">Python, Flask, Docker</span></div>
         <div class="desc">
           <p>Builds playlists from a target BPM rather than from genre. Nobody else in the
           biohacking track approached it that way. Team of four, 24 hours, 3.9/5 from the jury.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Deep learning coursework</p>
+        <div class="rail"><b><a href="https://github.com/qualv13/GGSN">GGSN</a></b>
+          <span class="stack">PyTorch, TensorFlow, scikit-learn</span></div>
+        <div class="desc">
+          <p>Transfer learning with Grad-CAM explanations, DistilBERT sentiment classification,
+          graph neural networks (GCN, GAT, GraphSAGE, GIN) over the Yelp dataset, and network
+          compression by pruning, quantization and distillation across seven architectures.</p>
         </div>
       </div>
     </section>
@@ -407,17 +433,10 @@ html.ats a{text-decoration:none}
         <div class="rail"><b>AGH University</b>Kraków<br>10.Oct 2023 &ndash; Jan 2027</div>
         <div class="desc">
           <p>GPA 4.74/5.00. Year Representative since the 1st semester, Student Council since the
-          2nd. Engineering thesis: applying deep learning to 2D-image to 3D-mesh conversion.</p>
+          2nd. Engineering thesis: applying deep learning to 2D-image to 3D-mesh conversion. Earlier: extended maths, physics and CS at V High School in Kraków, C++ and competitive programming.</p>
         </div>
       </div>
 
-      <div class="row">
-        <p class="title">Extended Mathematics, Physics and Computer Science</p>
-        <div class="rail"><b>V High School</b>Kraków<br>2019 &ndash; 2023</div>
-        <div class="desc">
-          <p>C++, competitive-programming problem solving.</p>
-        </div>
-      </div>
     </section>
 
     <section class="sec">
