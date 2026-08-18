@@ -118,7 +118,7 @@ export const experience: readonly ExperienceEntry[] = [
     company: "IBM Software Lab",
     role: "Software Developer Intern",
     period: "Feb 2026 — present",
-    meta: "Kraków · hybrid",
+    meta: "Kraków · hybrid · part-time, 11/16 FTE (110 h/month)",
     current: true,
     bullets: [
       "Optimizing Data Lineage performance with graph and tree algorithms in Java Spring, over large enterprise metadata graphs.",
