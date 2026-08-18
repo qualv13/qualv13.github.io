@@ -36,6 +36,27 @@ Conventions that must survive future edits:
 - **no arrow glyphs inside a job title** ("Team Mentor and Community Leader")
 - the education entry keeps V High School as its own row (owner asked)
 
+Pagination in ATS mode is tight and the failure is counter-intuitive. One
+column runs taller than two, and `.row{break-inside:avoid}` keeps entries whole,
+so a row that does not fit leaves the rest of the page empty and shifts
+everything after it down. That gap, not the text length, is what spilled the
+last GDPR line onto page 3 (08.2026). Fix it by tightening the ATS rhythm
+(`html.ats` row/section margins, rail gap, h2 margin, gdpr padding), never by
+switching to `break-inside:auto`: that reclaims the gap but **Chrome ignores
+`break-after:avoid`**, so the split entry strands its title and stack line at
+the foot of the page. There is a comment in the CSS saying so.
+
+Do not eyeball the page count in a print preview, render it:
+
+    chrome.exe --headless=new --disable-gpu --no-pdf-header-footer       --virtual-time-budget=6000 --print-to-pdf=out.pdf       "http://localhost:5173/cv/source.html?ats"
+
+Then assert on the result: two pages, every entry title on the same page as its
+own body, page 2 top gap >= 12mm, no glued words, URLs literal. Re-run with
+`--host-resolver-rules="MAP fonts.googleapis.com 127.0.0.1,MAP fonts.gstatic.com 127.0.0.1"`
+to prove the layout survives the webfont failing to load. Outfit is not
+installed locally, so `OutfitThin-Regular` in the embedded font list means the
+webfont **did** load -- that is its PostScript name, not a fallback.
+
 Verify every export against three engines, not one: MuPDF, pdfminer.six and Xpdf
 share no code. Check headings, that IBM is the first employer in the extracted
 text, that URLs appear as literal text, and that no words are glued together.
