@@ -211,6 +211,15 @@ html.ats p,html.ats li{orphans:2;widows:2}
   body{background:#fff;padding:0}
   .bar{display:none}
   .sheet{width:auto;min-height:297mm;margin:0;box-shadow:none}
+  /* Page 1 bleeds (`@page:first{margin:0}`) so the masthead band can reach the
+     trim -- which also means nothing stops the text at the foot of that page.
+     Two-column mode filled it to 295mm of 297, i.e. inside most printers'
+     unprintable edge. @page cannot be scoped to a class, so the break is placed
+     by hand instead, and only where the rail layout is in use: ATS mode is one
+     column, paginates differently, and its own margins are already fine.
+     If the entries above this row change, re-measure -- the row carrying
+     `.break` is the one that starts page 2. */
+  html:not(.ats) .row.break{break-before:page}
 }
 
 @media screen and (max-width:800px){
@@ -385,7 +394,7 @@ html.ats p,html.ats li{orphans:2;widows:2}
         </div>
       </div>
 
-      <div class="row">
+      <div class="row break">
         <p class="title">IoT fleet backend</p>
         <div class="rail"><b><a href="https://github.com/qualv13/IoTServerApp">IoTServerApp</a></b>
           <span class="stack">Java 17, Spring Boot 3.3, PostgreSQL, RabbitMQ/MQTT, Protocol Buffers, Docker</span></div>
