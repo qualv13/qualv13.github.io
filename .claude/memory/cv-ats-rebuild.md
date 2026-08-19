@@ -126,6 +126,21 @@ positioning, not material. So:
   `h2` 2→1.7mm, a new `html.ats .row .desc{margin-top:.6mm}`). Page 2 now ends
   at ~284mm of 297. Anything added from here needs something else removed.
 
+**Printing the two-column version has a hand-placed page break (19.08.2026).**
+Page 1 bleeds by design (`@page:first{margin:0}`) so the masthead band reaches
+the trim, which also means nothing stops the text at the foot of that page —
+it was filling to 295mm of 297, inside most printers' unprintable edge. `@page`
+cannot be scoped to a class, so `html:not(.ats) .row.break{break-before:page}`
+does it instead, and the `break` class sits on the **IoTServerApp** row. ATS
+mode is untouched by that rule and paginates on its own. Result: styled 276mm /
+287mm, ATS 286mm / 288mm, both two pages. **If entries before IoTServerApp
+change, re-measure — the row carrying `.break` is the one that starts page 2.**
+
+Content parity between the two modes is now something to assert, not assume:
+extract both renders, strip `·` and `|`, tokenise, compare. They should match
+exactly except for hyphenation at line breaks (`session-scoped`,
+`English-speaking`). 1142 tokens each as of 19.08.2026.
+
 **Export trap found the hard way:** Chrome's headless PDF export caches the page
 per `--user-data-dir`, and `source.html` without a query string comes back stale
 while `?ats` does not. Always add a cache-buster (`?v=$RANDOM`) or a fresh
