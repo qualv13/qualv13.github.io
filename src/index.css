@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, sans-serif;
+  /* Inter is not downloaded any more — nothing rendered in it, it only sat in
+     these fallback chains. Keep the generic stacks behind the two faces. */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   /* Rajdhani ≈ the Cyberpunk 2077 UI typeface */
   --font-hud: "Rajdhani", "JetBrains Mono", ui-sans-serif, sans-serif;

@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+# The viewer page at /cv/ stays indexable; the PDF behind it does not, because
+# it carries a phone number. Humans still download it from the button there.
+Disallow: /cv/Jakub-Kierznowski-CV.pdf
 
 Sitemap: https://qualv13.github.io/sitemap.xml
