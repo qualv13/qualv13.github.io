@@ -225,8 +225,8 @@ export const projects: readonly Project[] = [
     description:
       "Backend platform for managing fleets of IoT smart lamps: JWT auth, real-time MQTT " +
       "communication via RabbitMQ, OTA firmware delivery, telemetry ingestion and fleet " +
-      "management. 15 JUnit 5 test classes covering controllers, services, repositories and " +
-      "security, with Testcontainers-backed integration tests. Containerized with Docker Compose.",
+      "management. Layered Spring architecture, Protocol Buffers device protocol, containerized " +
+      "with Docker Compose.",
     tech: ["Java", "Spring Boot", "MQTT", "RabbitMQ", "PostgreSQL", "Protobuf", "AWS S3", "Docker"],
     links: {
       github: "https://github.com/qualv13/IoTServerApp",
@@ -237,8 +237,9 @@ export const projects: readonly Project[] = [
     name: "CarCharging",
     year: "2025",
     description:
-      "EV charging optimizer integrating the UK Carbon Intensity API to recommend the cleanest " +
-      "48-hour charging window using a sliding-window algorithm.",
+      "EV charging optimizer integrating the UK Carbon Intensity API to find the cleanest 1–6 hour " +
+      "charging window inside the next 48 hours, using a sliding window over half-hourly " +
+      "generation slots.",
     tech: ["Java", "Spring Boot", "REST API", "Docker"],
     links: {
       github: "https://github.com/qualv13/CarCharging",
@@ -262,7 +263,7 @@ export const projects: readonly Project[] = [
     description:
       "AI-native internal hardware rental and inventory hub: semantic search, an inventory " +
       "auditor, and Gemini tool-calling with a deterministic fallback behind every call. " +
-      "Built for the Booksy AI-Native assessment.",
+      "Built as a recruitment assignment that required an AI-native approach.",
     tech: ["Python", "AI Agents"],
     links: {
       github: "https://github.com/qualv13/hardware-hub",

@@ -96,6 +96,14 @@ body{margin:0;padding:22px 14px 60px;background:#3a3d41;font-family:var(--sans)}
   margin:3.4mm 0 0;font-size:var(--fs-lead);color:var(--body);
   text-align:justify;hyphens:auto;
 }
+/* SUMMARY label: a real h2 so ATS parsers attach the paragraph to a section,
+   sized down here because it sits inside the masthead, not the document body.
+   ATS mode lets it fall back to the normal h2 rules. */
+.lead-head{
+  margin:3.4mm 0 1.4mm;font-size:9.2pt;font-weight:700;line-height:1;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--ink);
+}
+.lead-head + .lead{margin-top:0}
 /* keyword line: the header no longer names a stack, this carries it */
 .stackbar{margin:2.6mm 0 0;font-size:var(--fs-lead);color:var(--ink)}
 .note{margin:0 0 2.4mm;font-size:var(--fs-stack);color:var(--mute)}
@@ -263,17 +271,19 @@ html.ats p,html.ats li{orphans:2;widows:2}
       <span><a href="https://qualv13.github.io">qualv13.github.io</a></span>
     </p>
 
+    <h2 class="lead-head">Summary</h2>
     <p class="lead">
-      Backend engineer working in Java and Python, drawn to graph data and to code that ships with
-      tests. At IBM I optimise graph and tree traversal in Data Lineage over enterprise metadata.
-      After hours I build and support InstalDesk, a live B2B SaaS with a native integration to the
-      Polish KSeF e-invoicing system. Final-year Computer Science and Intelligent Systems at AGH,
-      GPA 4.74/5.00, graduating January 2027.
+      Backend engineer working in Java and Python. At IBM I optimise graph and tree traversal in
+      Data Lineage over enterprise metadata; the same algorithmic work runs through DrugPath, an
+      agent over a 47,031-node biomedical graph, and CarCharging, a sliding window over half-hourly
+      forecasts. After hours I build and support InstalDesk, a live B2B SaaS with a native
+      integration to the Polish KSeF e-invoicing system. Final-year Computer Science and
+      Intelligent Systems at AGH, GPA 4.74/5.00, graduating January 2027.
     </p>
 
     <p class="stackbar">Java 21 &middot; Spring Boot &middot; Spring Security &middot; PostgreSQL
-      &middot; Neo4j &middot; Python &middot; FastAPI &middot; Docker &middot; Testcontainers
-      &middot; Jenkins</p>
+      &middot; Neo4j &middot; Python &middot; FastAPI &middot; Docker &middot; RabbitMQ and MQTT
+      &middot; Jenkins &middot; GitHub Actions</p>
   </header>
 
   <div class="doc">
@@ -287,10 +297,11 @@ html.ats p,html.ats li{orphans:2;widows:2}
         <div class="rail"><b>IBM Software Lab</b>Kraków &middot; hybrid<br>Feb 2026 &ndash; Present</div>
         <div class="desc">
           <ul>
-            <li>Java and Spring on Data Lineage: graph and tree traversal over large enterprise
-            metadata graphs. Scale and internals are covered by IBM confidentiality.</li>
-            <li>Built the automated pytest suite for that pipeline &mdash; parametrised cases,
-            session-scoped fixtures, async execution. Cut the run from 20 minutes to 4.</li>
+            <li>Java and Spring on Data Lineage: optimise performance over large enterprise
+            metadata graphs by implementing graph and tree traversal algorithms. (Client data and
+            exact figures are under NDA.)</li>
+            <li>Cut the pipeline test run from 20 minutes to 4 by making the automated pytest suite
+            asynchronous &mdash; parametrised cases, session-scoped fixtures.</li>
             <li>Own the Jenkins job scheduling for the pipeline.</li>
             <li>Daily Scrum in an English-speaking cross-functional team.</li>
           </ul>
@@ -338,7 +349,7 @@ html.ats p,html.ats li{orphans:2;widows:2}
       <div class="row">
         <p class="title">InstalDesk, B2B SaaS for Polish installation contractors</p>
         <div class="rail"><b><a href="https://instaldesk.pl">instaldesk.pl</a></b>
-          <span class="meta">live since Apr 2026, v1.9.0, pilot users</span>
+          <span class="meta">live since Apr 2026, v1.9.0, pilot users &middot; closed source</span>
           <span class="stack">Python, FastAPI, PostgreSQL, SQLite, Stripe, KSeF API</span></div>
         <div class="desc">
           <ul>
@@ -360,11 +371,9 @@ html.ats p,html.ats li{orphans:2;widows:2}
         <div class="rail"><b><a href="https://github.com/qualv13/IoTServerApp">IoTServerApp</a></b>
           <span class="stack">Java 17, Spring Boot 3.3, PostgreSQL, RabbitMQ/MQTT, Protocol Buffers, Docker</span></div>
         <div class="desc">
-          <p>Layered Spring backend for managing smart-lamp fleets, with 15 JUnit 5 test classes
-          across controllers, services, repositories and security, and integration tests on
-          Testcontainers. JWT auth with refresh tokens, MQTT command and telemetry topics over
-          RabbitMQ, a Protocol Buffers device protocol, OTA firmware delivery from S3, scheduled
-          device jobs. Full Docker Compose stack.</p>
+          <p>Layered Spring backend for managing smart-lamp fleets. JWT auth with refresh tokens,
+          MQTT command and telemetry topics over RabbitMQ, a Protocol Buffers device protocol, OTA
+          firmware delivery from S3, scheduled device jobs. Full Docker Compose stack.</p>
         </div>
       </div>
 
@@ -382,21 +391,9 @@ html.ats p,html.ats li{orphans:2;widows:2}
       </div>
 
       <div class="row">
-        <p class="title">AI-native hardware rental and inventory hub</p>
-        <div class="rail"><b><a href="https://github.com/qualv13/hardware-hub">hardware-hub</a></b>
-          <span class="meta"></span>
-          <span class="stack">Python, FastAPI, Vue, Gemini, Docker</span></div>
-        <div class="desc">
-          <p>Internal tool for tracking equipment, availability and hand-offs: semantic search over
-          the inventory, an auditor that flags inconsistent records, and Gemini tool-calling for
-          repairs. Every AI call has a deterministic fallback, so the product still works when the
-          model does not.</p>
-        </div>
-      </div>
-
-      <div class="row">
         <p class="title">BPM-first workout playlist generator</p>
-        <div class="rail"><b>Fit2Beat</b><span class="meta">HackYeah 2025, top 8 of 65+</span>
+        <div class="rail"><b><a href="https://fit2beat.toadres.pl">fit2beat.toadres.pl</a></b>
+          <span class="meta">HackYeah 2025, top 8 of 65+</span>
           <span class="stack">Python, Flask, Docker</span></div>
         <div class="desc">
           <p>Builds playlists from a target BPM rather than from genre. Nobody else in the
@@ -409,23 +406,12 @@ html.ats p,html.ats li{orphans:2;widows:2}
         <div class="rail"><b><a href="https://github.com/qualv13/CarCharging">CarCharging</a></b>
           <span class="stack">Java, Spring Boot, REST, Docker</span></div>
         <div class="desc">
-          <p>Finds the cleanest 48-hour charging window from the UK Carbon Intensity API with a
-          sliding window over half-hourly forecasts, and serves the forecast through a REST API.</p>
+          <p>Finds the cleanest 1&ndash;6 hour charging window inside the next 48 hours from the UK
+          Carbon Intensity API, with a sliding window over half-hourly generation slots, and serves
+          it and the daily fuel mix through a REST API.</p>
         </div>
       </div>
 
-      <div class="row">
-        <p class="title">Graph and deep neural networks</p>
-        <div class="rail"><b><a href="https://github.com/qualv13/GGSN">GGSN</a></b>
-          <span class="meta">Graph and Deep Neural Networks, AGH coursework</span>
-          <span class="stack">PyTorch, TensorFlow, scikit-learn</span></div>
-        <div class="desc">
-          <p>Graph neural networks (GCN, GAT, GraphSAGE, GIN) over the Yelp dataset, benchmarked
-          against one another. Transfer learning with Grad-CAM explanations and DistilBERT sentiment
-          classification. Network compression by pruning, quantisation and distillation across seven
-          architectures, compared on accuracy against model size.</p>
-        </div>
-      </div>
     </section>
 
     <section class="sec">
@@ -435,16 +421,17 @@ html.ats p,html.ats li{orphans:2;widows:2}
         <div>
           <p class="split-head">Tech</p>
           <p><span class="tag">Core:</span> Java 21, Spring Boot, Spring Security, Hibernate/JPA,
-          Maven, JUnit 5, Testcontainers, PostgreSQL, SQL, REST APIs.</p>
+          Maven, JUnit 5, PostgreSQL, SQL, REST APIs, OOP and design patterns, algorithms and data
+          structures (graph and tree traversal, sliding window, complexity analysis).</p>
           <p><span class="tag">Working knowledge:</span> Python (FastAPI, pytest), Docker and
-          Compose, Linux/Bash, Git, Jenkins CI/CD, RabbitMQ, MQTT, Protocol Buffers, OAuth 2.0,
-          Neo4j and Cypher, AWS S3, algorithms and data structures.</p>
+          Compose, Linux/Bash, Git, Jenkins and GitHub Actions CI/CD, RabbitMQ, MQTT, Protocol
+          Buffers, Testcontainers, OAuth 2.0, Neo4j and Cypher, AWS S3.</p>
           <p><span class="tag">Also used:</span> Vue with TailwindCSS, C# (Unity), C++, n8n, LLM
           APIs, self-hosted models (Ollama), TensorFlow, scikit-learn.</p>
         </div>
         <div>
           <p class="split-head">Soft</p>
-          <p>Agile and Kanban, daily Scrum in a cross-functional English-speaking team. Lead
+          <p>Agile and Kanban with Jira, daily Scrum in a cross-functional English-speaking team. Lead
           event coordinator for the <a href="https://volt.agh.edu.pl">VOLT 2025</a> conference,
           including partnership deals with tech companies. I ship my own product and handle its
           support and user contact myself.</p>

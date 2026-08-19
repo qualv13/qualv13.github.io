@@ -61,10 +61,38 @@ Verify every export against three engines, not one: MuPDF, pdfminer.six and Xpdf
 share no code. Check headings, that IBM is the first employer in the extracted
 text, that URLs appear as literal text, and that no words are glued together.
 
-Still open:
-- `IoTServerApp` README says "The Maven configuration and dependencies indicate
-  support for" above the test list, though 15 real JUnit 5 classes exist; the
-  repo also has no `.github/workflows`, so there is no CI badge behind them.
+**The IoTServerApp test claim was false and is gone (19.08.2026).** All 16 test
+files under `src/test` exist, but 15 of them are commented out line by line —
+commented in the Jan 2026 commit "working online ver". `mvn test` runs exactly
+one test, the Spring context check. The CV and the site both claimed "15 JUnit 5
+test classes ... integration tests on Testcontainers"; that sentence is removed
+from both, Testcontainers moved from Core to Working knowledge, and the repo
+README now says the suite is disabled. Do not put the claim back unless the
+tests are actually uncommented and green.
+
+Rewritten again 19.08.2026 against a recruitment-simulation review:
+- `SUMMARY` heading added over the lead (a real `h2.lead-head`, sized down for
+  the masthead, falls back to normal h2 styling in ATS mode)
+- algorithms moved from Working knowledge into **Core**, with the concrete
+  techniques named; the summary now names DrugPath and CarCharging as the
+  evidence
+- IBM bullet 1 says what he did and puts NDA in a parenthesis; bullet 2 leads
+  with "20 minutes to 4"
+- projects cut 7 → 5: `hardware-hub` out (it was the client-named assignment),
+  `GGSN` out (coursework, and its own repo README covers it well). Fit2Beat now
+  links the live `fit2beat.toadres.pl` instead of implying a repo that 404s,
+  InstalDesk is marked "closed source"
+- keywords added only where verifiable: GitHub Actions (deploy.yml here,
+  deploy-pages.yml in neo4j-agent), OOP and design patterns, Jira (owner's
+  word), RabbitMQ/MQTT promoted into the stack bar. **Kubernetes, Kafka,
+  microservices and Mockito stay out** — nothing backs them, and Mockito is
+  commented out in the only repo that imports it
+- CarCharging was described wrong everywhere: it finds the cleanest **1–6 h**
+  window inside the next 48 h (`hours < 1 || hours > 6`, `now.plusHours(48)`),
+  not "a 48-hour window". Fixed in CV, site and repo description
+
+Availability line, Polish CV and a Polish GDPR clause were all **rejected by the
+owner** — do not re-propose them without being asked.
 
 Rewritten again 2026-08-18 against the owner's review list: headline is
 **Junior Software Engineer** (not Java-specific), a one-line keyword stack bar
