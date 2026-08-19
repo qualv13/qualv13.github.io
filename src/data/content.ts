@@ -234,6 +234,18 @@ export const projects: readonly Project[] = [
     },
   },
   {
+    name: "Power-Grid Negotiation RL",
+    year: "2026",
+    badge: "research · paper in preparation",
+    description:
+      "Multi-agent reinforcement learning environment where agents negotiate power distribution " +
+      "across a grid under load. Agents trained with Proximal Policy Optimization in PyTorch and " +
+      "served back into the Unity simulation through ONNX. Two-person project.",
+    tech: ["Unity", "C#", "PyTorch", "PPO", "ONNX"],
+    links: {},
+    private: true,
+  },
+  {
     name: "CarCharging",
     year: "2025",
     description:

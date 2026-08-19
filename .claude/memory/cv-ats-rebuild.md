@@ -98,6 +98,39 @@ Rewritten again 19.08.2026 against a recruitment-simulation review:
 Availability line, Polish CV and a Polish GDPR clause were all **rejected by the
 owner** — do not re-propose them without being asked.
 
+Repositioned again 19.08.2026 after comparing the CV against a peer's (same
+year, same faculty, same student council) who was getting interviews at the
+same companies. What she had and he did not: a summary naming the target role,
+and publications. What he has and she does not: a live commercial product,
+JVM depth, certifications, a stated GPA. The conclusion was that the gap was
+positioning, not material. So:
+
+- the target role is now **stated in the summary**, in bold, and deliberately
+  role-shaped rather than language-shaped: "junior software engineer role where
+  product engineering meets applied AI". He wants both halves visible — the
+  market asks for a developer who can wire AI in, not an AI specialist
+- the AI vocabulary is now on the CV **because the repos back it**: DrugPath
+  really is an LLM agent with four retrieval tools (three `.cypher` queries plus
+  a similarity search, driven by `agent/system_prompt.txt`). Check the repo
+  before strengthening this wording further
+- new PROJECTS rows: the **power-grid multi-agent RL** work (Unity, PyTorch,
+  PPO, ONNX, two-person, paper in preparation — the collaborator is the peer
+  above, and the ONNX detail came from her CV, so confirm before restating it)
+  and the **engineering thesis** as its own row instead of a clause in Education
+- SKILLS gained an **AI:** bucket between Core and Working knowledge; Neo4j and
+  Cypher moved there, TensorFlow/scikit-learn/Ollama came up out of "Also used"
+- CERTIFICATIONS now sits **above** EDUCATION, so the credentials land higher
+- `CarCharging` was cut to pay for the space (IoTServerApp already carries
+  Spring, and the sliding window survives in the Skills line)
+- the ATS rhythm was tightened a second time (`row` 1.8→1.3mm, `sec` 2.4→2mm,
+  `h2` 2→1.7mm, a new `html.ats .row .desc{margin-top:.6mm}`). Page 2 now ends
+  at ~284mm of 297. Anything added from here needs something else removed.
+
+**Export trap found the hard way:** Chrome's headless PDF export caches the page
+per `--user-data-dir`, and `source.html` without a query string comes back stale
+while `?ats` does not. Always add a cache-buster (`?v=$RANDOM`) or a fresh
+profile, then assert on extracted strings — a stale render looks perfectly fine.
+
 Rewritten again 2026-08-18 against the owner's review list: headline is
 **Junior Software Engineer** (not Java-specific), a one-line keyword stack bar
 sits under the summary and now carries the ATS keyword load the headline used to,

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jakub Kierznowski — CV</title>
-<meta name="description" content="CV — Jakub Kierznowski. Backend engineer working in Java and Python. Software Developer Intern at IBM, CS &amp; Intelligent Systems at AGH, solo developer of InstalDesk.">
+<meta name="description" content="CV — Jakub Kierznowski. Software engineer who builds products and the AI inside them. Software Developer Intern at IBM, CS &amp; Intelligent Systems at AGH, solo developer of InstalDesk.">
 <meta name="robots" content="noindex">
 
 <!--
@@ -195,11 +195,12 @@ html.ats a{text-decoration:none}
    height was spilling the GDPR clause onto a third page. The fix is a tighter
    rhythm here only -- do not swap it for break-inside:auto, Chrome ignores
    break-after:avoid and strands the heading of the split entry. */
-html.ats .row{margin-bottom:1.8mm}
-html.ats .sec{margin-bottom:2.4mm}
-html.ats .row .rail{margin:.3mm 0 .6mm}
-html.ats h2{margin-bottom:2mm}
-html.ats .gdpr{padding-top:2.4mm;padding-bottom:2.4mm}
+html.ats .row{margin-bottom:1.3mm}
+html.ats .sec{margin-bottom:2mm}
+html.ats .row .rail{margin:.3mm 0 .5mm}
+html.ats .row .desc{margin-top:.6mm}
+html.ats h2{margin-bottom:1.7mm}
+html.ats .gdpr{padding-top:2.2mm;padding-bottom:2.2mm}
 html.ats p,html.ats li{orphans:2;widows:2}
 
 /* Page 1 is flush to the edge so the masthead band bleeds. Every later page
@@ -273,12 +274,15 @@ html.ats p,html.ats li{orphans:2;widows:2}
 
     <h2 class="lead-head">Summary</h2>
     <p class="lead">
-      Backend engineer working in Java and Python. At IBM I optimise graph and tree traversal in
-      Data Lineage over enterprise metadata; the same algorithmic work runs through DrugPath, an
-      agent over a 47,031-node biomedical graph, and CarCharging, a sliding window over half-hourly
-      forecasts. After hours I build and support InstalDesk, a live B2B SaaS with a native
-      integration to the Polish KSeF e-invoicing system. Final-year Computer Science and
-      Intelligent Systems at AGH, GPA 4.74/5.00, graduating January 2027.
+      Software engineer who builds products and the AI inside them. At IBM I optimise graph and
+      tree traversal in Data Lineage over enterprise metadata; after hours I build and support
+      InstalDesk, a live B2B SaaS with a native integration to the Polish KSeF e-invoicing system.
+      On the AI side: an LLM agent with Cypher retrieval tools over a 47,031-node biomedical graph,
+      reinforcement-learning agents negotiating in a power-grid simulation (paper in preparation),
+      and an engineering thesis on deep learning for 2D-image to 3D-mesh conversion.
+      <span class="tag">I am looking for a junior software engineer role where product engineering
+      meets applied AI.</span> Final-year Computer Science and Intelligent Systems at AGH, GPA 4.74/5.00, graduating
+      January 2027.
     </p>
 
     <p class="stackbar">Java 21 &middot; Spring Boot &middot; Spring Security &middot; PostgreSQL
@@ -367,6 +371,21 @@ html.ats p,html.ats li{orphans:2;widows:2}
       </div>
 
       <div class="row">
+        <p class="title">DrugPath, biomedical knowledge-graph agent</p>
+        <div class="rail"><b><a href="https://github.com/qualv13/neo4j-agent">neo4j-agent</a></b>
+          <span class="meta">Neo4j Aura Agent Hackathon 2026, top 6</span>
+          <span class="stack">Neo4j Aura, Cypher, Python, LLM agents</span></div>
+        <div class="desc">
+          <p>An LLM agent with four retrieval tools over the Hetionet biomedical graph (47,031
+          nodes, 293k relationships): three Cypher queries and a similarity search, driven by a
+          system prompt, walking drug &rarr; gene &rarr; pathway &rarr; disease paths to explain how
+          a drug works and where it might be repurposed. Educational project on public research
+          data. Demo at
+          <a href="https://qualv13.github.io/neo4j-agent/">qualv13.github.io/neo4j-agent</a>.</p>
+        </div>
+      </div>
+
+      <div class="row">
         <p class="title">IoT fleet backend</p>
         <div class="rail"><b><a href="https://github.com/qualv13/IoTServerApp">IoTServerApp</a></b>
           <span class="stack">Java 17, Spring Boot 3.3, PostgreSQL, RabbitMQ/MQTT, Protocol Buffers, Docker</span></div>
@@ -378,15 +397,24 @@ html.ats p,html.ats li{orphans:2;widows:2}
       </div>
 
       <div class="row">
-        <p class="title">DrugPath, biomedical knowledge-graph agent</p>
-        <div class="rail"><b><a href="https://github.com/qualv13/neo4j-agent">neo4j-agent</a></b>
-          <span class="meta">Neo4j Aura Agent Hackathon 2026, top 6</span>
-          <span class="stack">Neo4j Aura, Cypher, Python, LLM agents</span></div>
+        <p class="title">Multi-agent reinforcement learning for power-grid negotiation</p>
+        <div class="rail"><b>research project</b>
+          <span class="meta">AGH, paper in preparation</span>
+          <span class="stack">Unity, C#, PyTorch, PPO, ONNX</span></div>
         <div class="desc">
-          <p>An agent that walks the Hetionet biomedical graph (47,031 nodes, 293k relationships)
-          along drug &rarr; gene &rarr; pathway &rarr; disease paths to explain how a drug works and
-          where it might be repurposed. Educational project on public research data. Demo at
-          <a href="https://qualv13.github.io/neo4j-agent/">qualv13.github.io/neo4j-agent</a>.</p>
+          <p>A simulation environment where agents negotiate power distribution across a grid under
+          load. Agents trained with Proximal Policy Optimization in PyTorch and served back into the
+          Unity simulation through ONNX. Two-person project.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Deep learning for 2D-image to 3D-mesh conversion</p>
+        <div class="rail"><b>engineering thesis</b>
+          <span class="meta">AGH, defence Jan 2027</span>
+          <span class="stack">Python, PyTorch</span></div>
+        <div class="desc">
+          <p>Reconstructing 3D meshes from single 2D images with deep learning. In progress.</p>
         </div>
       </div>
 
@@ -398,17 +426,6 @@ html.ats p,html.ats li{orphans:2;widows:2}
         <div class="desc">
           <p>Builds playlists from a target BPM rather than from genre. Nobody else in the
           biohacking track approached it that way. Team of four, 24 hours, 3.9/5 from the jury.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <p class="title">Green-window EV charging optimiser</p>
-        <div class="rail"><b><a href="https://github.com/qualv13/CarCharging">CarCharging</a></b>
-          <span class="stack">Java, Spring Boot, REST, Docker</span></div>
-        <div class="desc">
-          <p>Finds the cleanest 1&ndash;6 hour charging window inside the next 48 hours from the UK
-          Carbon Intensity API, with a sliding window over half-hourly generation slots, and serves
-          it and the daily fuel mix through a REST API.</p>
         </div>
       </div>
 
@@ -435,11 +452,13 @@ html.ats p,html.ats li{orphans:2;widows:2}
           <p><span class="tag">Core:</span> Java 21, Spring Boot, Spring Security, Hibernate/JPA,
           Maven, JUnit 5, PostgreSQL, SQL, REST APIs, OOP and design patterns, algorithms and data
           structures (graph and tree traversal, sliding window, complexity analysis).</p>
+          <p><span class="tag">AI:</span> LLM agents and tool calling, retrieval over knowledge
+          graphs (Neo4j, Cypher), prompt engineering, self-hosted models (Ollama), PyTorch,
+          reinforcement learning (PPO), graph neural networks, TensorFlow, scikit-learn.</p>
           <p><span class="tag">Working knowledge:</span> Python (FastAPI, pytest), Docker and
           Compose, Linux/Bash, Git, Jenkins and GitHub Actions CI/CD, RabbitMQ, MQTT, Protocol
-          Buffers, Testcontainers, OAuth 2.0, Neo4j and Cypher, AWS S3.</p>
-          <p><span class="tag">Also used:</span> Vue with TailwindCSS, C# (Unity), C++, n8n, LLM
-          APIs, self-hosted models (Ollama), TensorFlow, scikit-learn.</p>
+          Buffers, Testcontainers, OAuth 2.0, AWS S3.</p>
+          <p><span class="tag">Also used:</span> Vue with TailwindCSS, C# (Unity), C++, n8n.</p>
         </div>
         <div>
           <p class="split-head">Soft</p>
@@ -449,28 +468,6 @@ html.ats p,html.ats li{orphans:2;widows:2}
           including partnership deals with tech companies. I ship my own product and handle its
           support and user contact myself.</p>
           <p>Languages: Polish native, English C1 (working language at IBM), French A2.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec">
-      <h2>Education</h2>
-      <div class="sec-bar"></div>
-
-      <div class="row">
-        <p class="title">Computer Science and Intelligent Systems, BEng</p>
-        <div class="rail"><b>AGH University of Krakow</b>Kraków<br>Oct 2023 &ndash; Jan 2027</div>
-        <div class="desc">
-          <p>GPA 4.74/5.00. Year Representative since the 1st semester, Student Council since the
-          2nd. Engineering thesis: applying deep learning to 2D-image to 3D-mesh conversion.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <p class="title">Extended Mathematics, Physics and Computer Science</p>
-        <div class="rail"><b>V High School</b>Kraków<br>2019 &ndash; 2023</div>
-        <div class="desc">
-          <p>C++, competitive-programming problem solving.</p>
         </div>
       </div>
     </section>
@@ -491,6 +488,28 @@ html.ats p,html.ats li{orphans:2;widows:2}
           <div class="sec-bar"></div>
           <p>Snowboarding, sailing, a self-hosted homelab with Docker and quantised local models on
           a Raspberry Pi and a VPS, game dev, board games.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Education</h2>
+      <div class="sec-bar"></div>
+
+      <div class="row">
+        <p class="title">Computer Science and Intelligent Systems, BEng</p>
+        <div class="rail"><b>AGH University of Krakow</b>Kraków<br>Oct 2023 &ndash; Jan 2027</div>
+        <div class="desc">
+          <p>GPA 4.74/5.00. Year Representative since the 1st semester, Student Council since the
+          2nd.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="title">Extended Mathematics, Physics and Computer Science</p>
+        <div class="rail"><b>V High School</b>Kraków<br>2019 &ndash; 2023</div>
+        <div class="desc">
+          <p>C++, competitive-programming problem solving.</p>
         </div>
       </div>
     </section>
