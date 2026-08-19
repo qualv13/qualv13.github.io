@@ -78,15 +78,19 @@ Rewritten again 19.08.2026 against a recruitment-simulation review:
   evidence
 - IBM bullet 1 says what he did and puts NDA in a parenthesis; bullet 2 leads
   with "20 minutes to 4"
-- projects cut 7 → 5: `hardware-hub` out (it was the client-named assignment),
-  `GGSN` out (coursework, and its own repo README covers it well). Fit2Beat now
-  links the live `fit2beat.toadres.pl` instead of implying a repo that 404s,
-  InstalDesk is marked "closed source"
+- projects cut 7 → 6: `hardware-hub` out (it was the client-named assignment).
+  `GGSN` was cut too and then **put back at the owner's request** — its own repo
+  README backs every claim in that entry. Fit2Beat now links the live
+  `fit2beat.toadres.pl` instead of implying a repo that 404s, InstalDesk is
+  marked "closed source"
 - keywords added only where verifiable: GitHub Actions (deploy.yml here,
-  deploy-pages.yml in neo4j-agent), OOP and design patterns, Jira (owner's
-  word), RabbitMQ/MQTT promoted into the stack bar. **Kubernetes, Kafka,
-  microservices and Mockito stay out** — nothing backs them, and Mockito is
-  commented out in the only repo that imports it
+  deploy-pages.yml in neo4j-agent), OOP and design patterns, RabbitMQ/MQTT
+  promoted into the stack bar. Boards read "Agile and Kanban on GitHub project
+  boards at IBM, Jira before that" — **IBM runs GitHub boards, not Jira**; the
+  owner used Jira earlier, so both are named and neither is implied of the
+  wrong employer. **Kubernetes, Kafka, microservices and Mockito stay out** —
+  nothing backs them, and Mockito is commented out in the only repo that
+  imports it
 - CarCharging was described wrong everywhere: it finds the cleanest **1–6 h**
   window inside the next 48 h (`hours < 1 || hours > 6`, `now.plusHours(48)`),
   not "a 48-hour window". Fixed in CV, site and repo description
