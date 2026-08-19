@@ -25,14 +25,17 @@ export const profile = {
   lastName: "Kierznowski",
   role: "Software Developer Intern @ IBM",
   education: "CS & Intelligent Systems student @ AGH",
-  headline: "I build production-grade backends.",
+  headline: "I build products and the AI inside them.",
   tagline:
-    "Backend engineering with Spring Boot, graph data and AI integration. " +
-    "Currently optimizing Data Lineage with graph algorithms in Java at IBM Kraków " +
-    "and building my own SaaS on the side.",
+    "Software engineering with Spring Boot and Python, graph data and LLM agents. " +
+    "At IBM I optimize Data Lineage with graph algorithms in Java; after hours I run my " +
+    "own SaaS and train reinforcement-learning agents for a power-grid simulation.",
   location: "Kraków, Poland",
   workMode: "on-site · hybrid",
-  availability: "Open to Junior Software Engineer roles",
+  availability: "Open to junior software engineer roles where product engineering meets applied AI",
+  /** Short, terminal-styled version of `availability` — the status line the
+   *  hero, the contact section and the netdeck overlay all render. */
+  openTo: "junior software engineer · product + applied AI",
   email: "jakub.kierznowskiii@gmail.com",
   /** Served from public/cv/ — path resolved against Vite's base URL. */
   cvFile: "cv/Jakub-Kierznowski-CV.pdf",
@@ -73,6 +76,20 @@ export const coreStack = [
   "RabbitMQ",
   "Jenkins",
   "AWS S3",
+] as const;
+
+/** The fake terminal session printed beside the hero. */
+export const heroTerminalLines = [
+  { text: "$ whoami", accent: "dim" },
+  { text: "jakub.kierznowski — swe intern @ IBM Kraków", accent: "plain" },
+  { text: "$ ls ./skills", accent: "dim" },
+  { text: "java/  spring-boot/  python/  neo4j/  llm-agents/  docker/", accent: "cyan" },
+  { text: "$ cat status.txt", accent: "dim" },
+  { text: `● open_to_work: ${profile.openTo}`, accent: "warn" },
+  { text: "$ ./career --next", accent: "dim" },
+  { text: "intern → junior → regular software engineer", accent: "cyan" },
+  { text: "$ breach --hint", accent: "dim" },
+  { text: "hit the yellow button, choom", accent: "warn" },
 ] as const;
 
 export const about = {
@@ -240,7 +257,8 @@ export const projects: readonly Project[] = [
     description:
       "Multi-agent reinforcement learning environment where agents negotiate power distribution " +
       "across a grid under load. Agents trained with Proximal Policy Optimization in PyTorch and " +
-      "served back into the Unity simulation through ONNX. Two-person project.",
+      "served back into the Unity simulation through ONNX. Two-person project: I gathered the " +
+      "data, built the environment and ran the training.",
     tech: ["Unity", "C#", "PyTorch", "PPO", "ONNX"],
     links: {},
     private: true,

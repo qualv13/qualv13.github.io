@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { profile, highlights, heroStats } from "../data/content";
+import { profile, highlights, heroStats, heroTerminalLines } from "../data/content";
 import { stagger, fadeIn } from "../lib/motion";
 import { useTyping } from "../hooks/useTyping";
 import { GitHubIcon, LinkedInIcon, MailIcon } from "./icons";
@@ -10,20 +10,7 @@ import Tag from "./ui/Tag";
 
 const CV_URL = `${import.meta.env.BASE_URL}${profile.cvFile}`;
 
-const TERMINAL_LINES = [
-  { text: "$ whoami", accent: "dim" },
-  { text: "jakub.kierznowski — swe intern @ IBM Kraków", accent: "plain" },
-  { text: "$ ls ./skills", accent: "dim" },
-  { text: "java/  spring-boot/  hibernate/  python/  neo4j/  docker/", accent: "cyan" },
-  { text: "$ cat status.txt", accent: "dim" },
-  { text: "● open_to_work: junior java backend roles", accent: "warn" },
-  { text: "$ ./career --next", accent: "dim" },
-  { text: "intern → junior → regular software engineer", accent: "cyan" },
-  { text: "$ breach --hint", accent: "dim" },
-  { text: "hit the yellow button, choom", accent: "warn" },
-] as const;
-
-const ACCENT_CLASS: Record<(typeof TERMINAL_LINES)[number]["accent"], string> = {
+const ACCENT_CLASS: Record<(typeof heroTerminalLines)[number]["accent"], string> = {
   dim: "text-white/40",
   plain: "text-white/85",
   cyan: "text-cyber-cyan",
@@ -133,7 +120,7 @@ export default function Hero(props: { start: boolean; onBreach: () => void }) {
             <span className="ml-3 text-xs text-white/40">~/jakub — netdeck</span>
           </div>
           <div className="space-y-2 px-5 py-5 text-[13px] leading-relaxed">
-            {TERMINAL_LINES.map((line, i) => (
+            {heroTerminalLines.map((line, i) => (
               <motion.p
                 key={line.text}
                 initial={{ opacity: 0 }}
@@ -147,7 +134,7 @@ export default function Hero(props: { start: boolean; onBreach: () => void }) {
             <motion.p
               initial={{ opacity: 0 }}
               animate={boot.done ? { opacity: 1 } : {}}
-              transition={{ delay: 0.5 + TERMINAL_LINES.length * 0.16 }}
+              transition={{ delay: 0.5 + heroTerminalLines.length * 0.16 }}
               className="text-cyber-cyan"
             >
               <span className="cursor-blink">▊</span>

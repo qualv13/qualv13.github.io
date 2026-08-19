@@ -78,7 +78,7 @@ function runCommand(raw: string, actions: Actions): Line[] | "CLEAR" | "EXIT" {
         { text: `email:    ${profile.email}`, kind: "output" },
         { text: `github:   ${profile.links.github}`, kind: "output" },
         { text: `linkedin: ${profile.links.linkedin}`, kind: "output" },
-        { text: "● status: open_to_work — junior java backend", kind: "accent" },
+        { text: `● status: open_to_work — ${profile.openTo}`, kind: "accent" },
       ];
     case "cv":
       window.open(CV_URL, "_blank");

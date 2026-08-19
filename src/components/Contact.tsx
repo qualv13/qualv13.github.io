@@ -29,14 +29,14 @@ export default function Contact() {
         </motion.h2>
 
         <motion.p variants={fadeIn} className="mt-5 max-w-md leading-relaxed text-white/60">
-          Got a junior Java opening, an internship growth path, or just want to talk graph
-          databases? My inbox compiles without warnings.
+          Got a junior software engineering opening, an internship growth path, or just want to
+          talk graph databases and LLM agents? My inbox compiles without warnings.
         </motion.p>
 
         <motion.p variants={fadeIn} className="mt-5 text-sm">
           <span className="text-cyber-green">●</span>{" "}
           <span className="text-white/70">
-            status: open_to_work — junior java backend · {profile.location} ·{" "}
+            status: open_to_work — {profile.openTo} · {profile.location} ·{" "}
             {profile.workMode}
           </span>
         </motion.p>
