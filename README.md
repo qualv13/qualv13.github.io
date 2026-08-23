@@ -1,13 +1,13 @@
-# Jakub Kierznowski — Portfolio
+# Jakub Kierznowski, portfolio
 
 Cyberpunk-themed personal portfolio: digital rain, boot sequence, glitch
 effects, and an interactive terminal (press <code>`</code> on the site or the
-`>_` button in the navbar — try `sudo hire_me`).
+`>_` button in the navbar, try `sudo hire_me`).
 
 > Styled after **Cyberpunk 2077**: yellow/cyan/red palette, Rajdhani HUD
 > type, clipped-corner UI, an optics HUD frame, periodic RELIC malfunction
 > bursts, and a **playable Breach Protocol minigame** (the CP2077 hacking
-> puzzle — solve daemons to unlock the CV and contact links).
+> puzzle: solve daemons to unlock the CV and contact links).
 
 ## Stack
 
@@ -27,7 +27,7 @@ npm run build    # type-check + production build to dist/
 
 ```
 src/
-├── data/content.ts        # ALL site text/links — edit content here only
+├── data/content.ts        # ALL site text/links, edit content here only
 ├── components/
 │   ├── ui/                # Section, Tag, NeonButton primitives
 │   ├── effects/           # MatrixRain, BootScreen, GlitchText
@@ -58,15 +58,27 @@ Two earlier design directions are kept for reference and viewable live:
 
 ## Deployment (GitHub Pages)
 
-1. Create a repo named `qualv13.github.io` and push this project.
-2. Add a GitHub Actions workflow that runs `npm ci && npm run build` and
-   deploys `dist/` to Pages (or run `npm run build` and publish `dist/`
-   manually).
-3. Done — site lives at `https://qualv13.github.io`. For a project repo
-   under a subpath instead, set `base: "/repo-name/"` in `vite.config.ts`.
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs
+`npm ci && npm run build` on every push to `main` and publishes `dist/` to
+Pages, so the live site at `https://qualv13.github.io` is whatever is on the
+default branch.
+
+Forking this for a project repo under a subpath means setting
+`base: "/repo-name/"` in `vite.config.ts`; a user page like this one needs no
+base.
 
 ## Updating content
 
 Everything a recruiter reads lives in [`src/data/content.ts`](src/data/content.ts):
 experience entries, projects, skills, achievements, education and contact
 links. To refresh the CV, replace `public/cv/Jakub-Kierznowski-CV.pdf`.
+
+## Licence
+
+The code is MIT, see [LICENSE](LICENSE). Take the components, the effects, the
+Breach Protocol minigame, whatever is useful.
+
+The content is not. The text in `src/data/content.ts`, the CV in `public/cv/`
+and the photographs describe a specific person, and MIT would let anyone
+republish them as their own. Swap `content.ts` for your own before deploying a
+fork.
