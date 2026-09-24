@@ -156,4 +156,92 @@ The hours are **off the CV again** (owner's call): the IBM rail says only
 `Part-time`. 110 h/month (11/16) is still the true number — it belongs on the
 first phone call, not on paper.
 
+Revised again 23.08.2026 against a jobgether CV-review report. **Most of that
+report was generic and two of its rewrites were worse** — it asked for the core
+skills to be split out from secondary tools when the CV already has
+Core/AI/Working-knowledge/Also-used buckets, and its own "recommended" text
+collapsed them into one flat list; its summary rewrite dropped every number
+except the GPA; and its suggested copy for two entries still had the reviewer's
+own commentary pasted inside it. Its only true ATS point was date formatting,
+and that was one line: the high-school row, now `Sep 2019 – Jun 2023`. Do not
+re-run those suggestions.
+
+What actually changed:
+- the **engineering-thesis row was replaced by Hardware Hub** (owner's call — the
+  repo now has 72 pytest tests, CI, and a golden query set scoring the graph
+  engine against the flat one). The thesis is still named in the summary, so it
+  did not leave the CV. `hardware-hub` names no client, so the old reason for
+  keeping it off is gone
+- the WRSS and VOLT hyperlinks are **unlinked**, see [[profile-consistency]]
+- GDPR clause shortened to cite the regulation without reciting its full title;
+  the Education row dropped "Student Council since the 2nd" (the WRSS entry
+  already says it) and Interests lost the Raspberry-Pi/VPS detail
+- parity re-asserted: **1127 tokens** in both renders (was 1142), identical after
+  un-hyphenating line breaks. ATS page 2 now ends at **281mm**, page 1 at 286mm
+
+**The styled render's bottom measurement does not respond to content, and that
+is by design.** `.sheet` is `display:flex;flex-direction:column` with
+`.doc{flex:1}`, so the `.gdpr` band is pushed to the foot of the sheet: styled
+page 2 reads 291.6mm no matter how much you cut above it. Three separate trims
+moved the ATS figure (289 → 285 → 281) and left styled untouched. Measure
+**ATS** when you are checking whether a cut bought space; the styled number only
+tells you whether the band spilled to a third page. Before assuming a render is
+stale, assert on strings — both renders here were fresh every time.
+
 See [[user-jakub]], [[portfolio-project-state]] and [[profile-consistency]].
+
+**Rewritten again 24.09.2026 to read less machine-written**, after a cold read
+by a recruiter-persona agent and a keyword match against 10 live Kraków junior
+postings (Motorola, Sabre, BBH, Allegro, AVSystem, BNP, EPAM and others).
+- Prose became short bullets; justified text and `hyphens:auto` are **off**
+  everywhere (the justified blocks read as pasted prose, and auto-hyphenation
+  split keywords for pdftotext). Cut on sight: "rather than", "where X meets
+  Y", em-dash tails, bracketed hedges (the NDA note, "Educational project"),
+  "AI-native", "Own the...", "Ways of working", the slogan summary opener.
+- New section **HACKATHONS AND COMPETITIONS** (DragonByte, Google, HackYeah).
+  Fit2Beat lost its project row and lives there; the Neo4j hackathon stays only
+  in the DrugPath rail. **DragonByte wording is "competed in the onsite final ...
+  on a wild card", never "finalist" or a rank**: the public finals scoreboard
+  lists exactly 20 names and wild cards are not on it, so a recruiter can check.
+- Skills: no Tech/Soft split heads; two balanced columns (Core + AI | Working
+  knowledge, Also used, Process, Languages). Python/FastAPI/pytest moved into
+  **Core** (three projects are Python). **Mockito is in Core now**, and it is
+  backed: `CarCharging` `ChargingServiceTest` uses `@Mock`/`@InjectMocks`, live,
+  CI green. The old "Mockito stays out" note was about IoTServerApp only.
+- Projects: both the **thesis row and GGSN** (owner asked to keep both). The
+  thesis row is private-repo only: own OccNet (ResNet-18 + FiLM, 15M params,
+  1-3 views) vs TripoSR/InstantMesh/TRELLIS/TripoSG (0.4-2.3B) on ShapeNet, GSO,
+  Pix3D, paired Wilcoxon tests.
+- **The RL row is his own work, but not on GitHub**: it lives in Plastic SCM at
+  `H:\UnityProjects\NegotiatingAgents-main` (PVGIS/OPSD data prep in
+  `python_files/prepare_profiles.py`, 32 household agents trading energy P2P,
+  PPO vs DQN/A2C/heuristics, multi-seed). `nataliadybczak/negotiation_agents` on
+  GitHub is the older food-for-energy version with 0 of his commits; do not use
+  it as evidence either way.
+- Links in `.desc`/`.list` are `white-space:nowrap`: the DrugPath demo URL was
+  breaking at its hyphen and extracting as `neo4jagent`.
+- No row carries `.break` any more; pages end on their own. Measured: styled
+  280.6 / 271.2mm, ATS 278.8 / 278.4mm, **1058 tokens** in both renders.
+- `Kraków, Poland` in the contact line; AGH Code Industry rail gained `Kraków`
+  so its date is not read as part of the company name.
+
+**ATS mode renders in Arial since 24.09.2026.** With Outfit at one weight, Chrome
+fakes every bold (name, headings, titles, `.tag`) as **Type3** glyphs; all three
+local extractors read them, but Type3 is a known drop-out for older commercial
+parsers, and it would take the name and every heading with it. `html.ats` now
+sets `--sans:Arial,...` (real Arial-BoldMT, no Type3). The styled render keeps
+Outfit and still has Type3 bold, which is fine because the ATS export is the
+file that gets uploaded. Check with `fitz` `get_fonts()`: no `Type3` in the ATS PDF.
+
+The owner **wants "where product engineering meets applied AI" kept** in the
+summary (24.09.2026), even though three blind recruiter agents each named it as
+the one template-sounding line and read it as "wants AI, Java is a side skill"
+for Java roles. Do not rewrite it again unless asked.
+
+Blind test the same day (5 synthetic competitors, 3 real Kraków postings):
+Allegro #2/6, BNP (AI team) #3/6, Motorola #2/6, phone screen in all three,
+always behind the "Google + Allegro intern, ICPC" profile. Simulated ATS: 2/10
+postings clearly reach a human, 2 likely, 5 borderline on real gaps (GCP/Azure/
+Kubernetes, 9-12 months required). The rewrite had dropped the literal words
+"CI/CD", "Agile", "unit tests", "Bash scripting"; they are back. `.nw` spans keep
+stack-bar items and "20 minutes to 4." from orphaning in Arial.

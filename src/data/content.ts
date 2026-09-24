@@ -135,13 +135,12 @@ export const experience: readonly ExperienceEntry[] = [
     company: "IBM Software Lab",
     role: "Software Developer Intern",
     period: "Feb 2026 — present",
-    meta: "Kraków · hybrid · part-time, 110 h/month (11/16)",
+    meta: "Kraków · hybrid",
     current: true,
     bullets: [
-      "Optimizing Data Lineage performance with graph and tree algorithms in Java Spring, over large enterprise metadata graphs.",
-      "Built automated test suites in Python/pytest with parametrised and session-scoped fixtures; coverage went up and the CI run got shorter.",
-      "Managing CI/CD via Jenkins job scheduling on cloud infrastructure.",
-      "Daily Agile/Scrum with cross-functional teams; enterprise architecture knowledge sharing via internal tech talks.",
+      "Implement and speed up graph and tree traversal over large metadata graphs in Data Lineage (Java, Spring).",
+      "Made the pipeline's pytest suite asynchronous, with parametrised cases and session-scoped fixtures. A full run went from 20 minutes to 4.",
+      "Maintain the Jenkins job schedule for the pipeline.",
     ],
     tags: ["Java", "Spring", "Graph Algorithms", "Python", "pytest", "Jenkins"],
   },
@@ -224,14 +223,14 @@ export const projects: readonly Project[] = [
   {
     name: "InstalDesk",
     year: "2026",
-    badge: "solo SaaS · live v1.9.0",
+    badge: "solo SaaS · live",
     description:
       "Quoting and VAT-invoicing SaaS for Polish installation contractors: a web PWA and a " +
       "Windows desktop client on one account. Native KSeF integration (API v2, FA(3) schema, " +
       "XAdES-BES certificate auth) filed straight to the Ministry of Finance with no third-party " +
       "integrator, Stripe subscription billing, per-tenant isolation and offline-first local " +
       "storage. I built all of it and I support it.",
-    tech: ["Python", "FastAPI", "PostgreSQL", "SQLite", "Stripe", "KSeF API"],
+    tech: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Stripe", "KSeF API"],
     links: { demo: "https://instaldesk.pl" },
     private: true,
   },
