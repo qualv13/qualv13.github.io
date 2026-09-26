@@ -139,6 +139,12 @@ h2{
 .row .desc li{margin:0 0 .8mm}
 .row .desc li:last-child{margin:0}
 
+/* Keep the expanded IBM entry clear of the printed page edge in the rail layout. */
+html:not(.ats) .masthead{padding-bottom:3.5mm}
+html:not(.ats) .doc{padding-top:1mm}
+html:not(.ats) .row:not(:last-child){margin-bottom:2mm}
+html:not(.ats) .row .desc li:not(:last-child){margin-bottom:.5mm}
+
 .split{display:grid;grid-template-columns:1fr 1fr;column-gap:8mm}
 .split > * + *{border-left:.4mm solid var(--divider);padding-left:8mm}
 .split p{margin:0 0 1.4mm}
@@ -194,11 +200,13 @@ html.ats a{text-decoration:none}
    height was spilling the GDPR clause onto a third page. The fix is a tighter
    rhythm here only -- do not swap it for break-inside:auto, Chrome ignores
    break-after:avoid and strands the heading of the split entry. */
-html.ats .row{margin-bottom:1.3mm}
-html.ats .sec{margin-bottom:2mm}
-html.ats .row .rail{margin:.3mm 0 .5mm}
+html.ats .row{margin-bottom:1mm}
+html.ats .sec{margin-bottom:1.5mm}
+html.ats .row .rail{margin:.2mm 0 .3mm}
 html.ats .row .desc{margin-top:.6mm}
-html.ats h2{margin-bottom:1.7mm}
+html.ats h2{margin-bottom:1.3mm}
+html.ats .split{row-gap:1.8mm}
+html.ats .doc{padding-bottom:3mm}
 html.ats .gdpr{padding-top:2.2mm;padding-bottom:2.2mm}
 html.ats p,html.ats li{orphans:2;widows:2}
 
@@ -216,7 +224,7 @@ html.ats p,html.ats li{orphans:2;widows:2}
      unprintable edge. @page cannot be scoped to a class, so the break is placed
      by hand instead, and only where the rail layout is in use: ATS mode is one
      column, paginates differently, and its own margins are already fine.
-     No row carries `.break` right now (09.2026): page 1 ends near 281mm on its
+     No row carries `.break` right now (09.2026): page 1 ends near 289mm on its
      own. If entries grow, put it on the row that should start page 2. */
   html:not(.ats) .row.break{break-before:page}
 }
@@ -308,11 +316,14 @@ html.ats p,html.ats li{orphans:2;widows:2}
         <div class="rail"><b>IBM Software Lab</b>Kraków &middot; hybrid<br>Feb 2026 &ndash; Present</div>
         <div class="desc">
           <ul>
-            <li>Implement and speed up graph and tree traversal over large metadata graphs in Data
-            Lineage (Java, Spring).</li>
-            <li>Made the pipeline's pytest suite asynchronous, with parametrised cases and
-            session-scoped fixtures. A full run went from <span class="nw">20 minutes to 4.</span></li>
-            <li>Maintain the Jenkins job schedule for the pipeline.</li>
+            <li>Optimise graph and tree traversal in Java/Spring; extend Data Lineage APIs with
+            graph-derived and enriched metadata.</li>
+            <li>Implemented production Neo4j label migrations in transactional batches and added
+            full-text indexes for Lucene-based search.</li>
+            <li>Write unit and API tests with JUnit, Mockito and pytest in Jenkins CI/CD;
+            PRs must meet a 90% SonarQube coverage gate.</li>
+            <li>Reduced pytest BVT suite runtime from <span class="nw">20 minutes to 4</span>
+            through asynchronous execution, parametrised cases and session-scoped fixtures.</li>
           </ul>
         </div>
       </div>
@@ -406,10 +417,10 @@ html.ats p,html.ats li{orphans:2;widows:2}
           <span class="meta">recruitment assignment</span>
           <span class="stack">Python, FastAPI, Neo4j, Vue 3, Gemini, Docker</span></div>
         <div class="desc">
-          <p>Compatibility is computed by walking a Neo4j graph (device &rarr; port &rarr; machine
-          &rarr; OS), so search returns only parts that fit and shows the connection path. Gemini tool
-          calling for search and an inventory audit, with a non-LLM fallback. 72 pytest tests in CI,
-          plus a fixed query set that scores graph search against plain search.</p>
+          <p>Natural-language inventory search with Gemini tool calling, including requests for
+          faulty devices. Computes compatibility by traversing a Neo4j graph (device &rarr; port
+          &rarr; machine &rarr; OS) and shows the connection path. Includes a non-LLM fallback,
+          72 pytest tests in CI and a fixed query set comparing graph-based and plain search.</p>
         </div>
       </div>
 
@@ -473,10 +484,10 @@ html.ats p,html.ats li{orphans:2;widows:2}
       <div class="split">
         <div>
           <p><span class="tag">Core:</span> Java 21, Spring Boot, Spring Security, Hibernate/JPA,
-          Maven, Python, FastAPI, SQL, PostgreSQL, REST APIs, Git, unit and integration tests
+          Maven, Python, FastAPI, SQL, PostgreSQL, Neo4j, Cypher, REST APIs, Git, unit and integration tests
           (JUnit 5, Mockito, pytest), OOP and design patterns, data structures and algorithms.</p>
           <p><span class="tag">AI:</span> LLM agents and tool calling (Gemini API, Neo4j Aura
-          Agents), Neo4j and Cypher, PyTorch, reinforcement learning (PPO), graph neural networks,
+          Agents), PyTorch, reinforcement learning (PPO), graph neural networks,
           TensorFlow, scikit-learn, Ollama.</p>
         </div>
         <div>

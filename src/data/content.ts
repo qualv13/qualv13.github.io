@@ -138,11 +138,12 @@ export const experience: readonly ExperienceEntry[] = [
     meta: "Kraków · hybrid",
     current: true,
     bullets: [
-      "Implement and speed up graph and tree traversal over large metadata graphs in Data Lineage (Java, Spring).",
-      "Made the pipeline's pytest suite asynchronous, with parametrised cases and session-scoped fixtures. A full run went from 20 minutes to 4.",
-      "Maintain the Jenkins job schedule for the pipeline.",
+      "Optimise graph and tree traversal in Java/Spring; extend Data Lineage APIs with graph-derived and enriched metadata.",
+      "Implemented production Neo4j label migrations in transactional batches and added full-text indexes for Lucene-based search.",
+      "Write unit and API tests with JUnit, Mockito and pytest in Jenkins CI/CD; PRs must meet a 90% SonarQube coverage gate.",
+      "Reduced pytest BVT suite runtime from 20 minutes to 4 through asynchronous execution, parametrised cases and session-scoped fixtures.",
     ],
-    tags: ["Java", "Spring", "Graph Algorithms", "Python", "pytest", "Jenkins"],
+    tags: ["Java", "Spring", "Neo4j", "Cypher", "Python", "pytest", "JUnit", "Mockito", "Jenkins", "SonarQube"],
   },
   {
     company: "WRSS WEAIiIB · AGH Faculty Students Council",
@@ -290,10 +291,11 @@ export const projects: readonly Project[] = [
     name: "hardware-hub",
     year: "2026",
     description:
-      "AI-native internal hardware rental and inventory hub: semantic search, an inventory " +
-      "auditor, and Gemini tool-calling with a deterministic fallback behind every call. " +
-      "Built as a recruitment assignment that required an AI-native approach.",
-    tech: ["Python", "AI Agents"],
+      "Natural-language inventory search with Gemini tool calling, including requests for faulty " +
+      "devices. Finds compatible hardware by traversing a Neo4j graph and showing the connection " +
+      "path. Includes a non-LLM fallback, 72 pytest tests in CI and a fixed query set comparing " +
+      "graph-based and plain search. Built as a recruitment assignment.",
+    tech: ["Python", "FastAPI", "Neo4j", "Vue 3", "Gemini", "Docker"],
     links: {
       github: "https://github.com/qualv13/hardware-hub",
       demo: "https://hardware-hub-2qc7.onrender.com/",
